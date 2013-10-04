@@ -9,14 +9,40 @@
 </head>
 <body>
 
-<div id="fig-laje-model" class="fig-laje">
+<svg id="fig-laje-model" class="fig-laje" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+
+	<line x1="20" y1="17" x2="80" y2="17" class="double-top" />
+	<line x1="88" y1="25" x2="88" y2="75" class="double-right" />
+	<line x1="20" y1="83" x2="80" y2="83" class="double-bottom" />
+	<line x1="12" y1="25" x2="12" y2="75" class="double-left" />
+
+	<line x1="20" y1="25" x2="80" y2="25" class="top" />
+	<line x1="80" y1="25" x2="80" y2="75" class="right" />
+	<line x1="20" y1="75" x2="80" y2="75" class="bottom" />
+	<line x1="20" y1="25" x2="20" y2="75" class="left" />
+
+	<text x="50" y="10" class="label-r label-topcenter"><tspan>r</tspan></text>
+
+	<text x="50" y="10" class="label-12center label-topcenter"   ><tspan>2</tspan></text>
+	<text x="50" y="90" class="label-12center label-bottomcenter"><tspan>1</tspan></text>
+
+	<text x="10" y="10" class="label-12corners label-topleft"    ><tspan>2</tspan></text>
+	<text x="90" y="10" class="label-12corners label-topright"   ><tspan>2</tspan></text>
+	<text x="10" y="90" class="label-12corners label-bottomleft" ><tspan>1</tspan></text>
+	<text x="90" y="90" class="label-12corners label-bottomright"><tspan>1</tspan></text>
+
+	<text x="10" y="10" class="label-1corners label-topleft" ><tspan>1</tspan></text>
+	<text x="90" y="10" class="label-1corners label-topright"><tspan>1</tspan></text>
+
+	<!--
 	<div class="retangulo"></div>
 	<div class="label-r">r</div>
 	<div class="label-1a">1</div>
 	<div class="label-1b">1</div>
 	<div class="label-2a">2</div>
 	<div class="label-2b">2</div>
-</div>
+	-->
+</svg>
 
 <form id="laje">
 
@@ -78,6 +104,32 @@
 </form>
 
 <!--
+ 1. Quatro bordos simplesmente apoiados
+ 2. Três bordos simplesmente apoiados e um engastado
+ 3. Três bordos simplesmente apoiados e um engastado
+ 4. Dois bordos simplesmente apoiados e dois engastados
+ 5. Dois bordos simplesmente apoiados e dois engastados
+ 6. Um bordo simplesmente apoiado e três engastados
+ 7. Um bordo simplesmente apoiado e três engastados
+ 8. Quatro bordos engastados
+ 9. Três bordos simplesmente apoiados e um livre
+10. Dois bordos simplesmente apoiados, um engastado e um livre
+11. Um bordo simplesmente apoiado, dois engastados e um livre
+12. Três bordos engastados e um livre
+
+13. Quatro bordos simplesmente apoiados
+14. Três bordos simplesmente apoiados e um engastado
+15. Dois bordos simplesmente apoiados e dois engastados
+16. Dois bordos simplesmente apoiados e dois engastados
+17. Um bordo simplesmente apoiado e três engastados
+18. Quatro bordos engastados
+19. Três bordos simplesmente apoiados e um livre
+20. Dois bordos simplesmente apoiados, um engastado e um livre
+21. Um bordo simplesmente apoiado, dois engastados e um livre
+22. Três bordos engastados e um livre
+
+
+
 
 Ma   - Momento máximo positivio na direção "a".
 Mb   - Momento máximo positivio na direção "b".
