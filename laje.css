@@ -1,0 +1,167 @@
+/* Stylish */
+html, body {
+	background: white;
+	background: #CCC;  /* debug */
+	color: black;
+	font-family: sans-serif;
+}
+input, output {
+	font-size: 0.8em;
+}
+
+/* Input styles based on http://purecss.io/ */
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select,
+textarea {
+	padding: 0.5em 0.6em;
+	border: 1px solid #CCC;
+	box-shadow: inset 0 1px 3px #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+input[type="color"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+select:focus,
+textarea:focus {
+	border-color: #129FEA;
+	outline: 0;
+}
+input[type="color"][disabled],
+input[type="date"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="email"][disabled],
+input[type="month"][disabled],
+input[type="number"][disabled],
+input[type="password"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="text"][disabled],
+input[type="time"][disabled],
+input[type="url"][disabled],
+input[type="week"][disabled],
+select[disabled],
+textarea[disabled] {
+	background-color: #eaeded;
+    color: #cad2d3;
+}
+input[readonly],
+select[readonly],
+textarea[readonly] {
+    background: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+}
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+    color: #b94a48;
+    border: 1px solid #ee5f5b;
+}
+input:focus:invalid:focus,
+textarea:focus:invalid:focus,
+select:focus:invalid:focus {
+    border-color: #e9322d;
+}
+
+
+/* .fig-laje, parametric-based graphics using just HTML and CSS.
+ */
+.fig-laje {
+	display: inline-block;
+	position: relative;
+	width: 5em;
+	height: 5em;
+}
+
+.fig-laje .retangulo {
+	background: white;
+	position: absolute;
+	top: 1.5em;
+	right: 1.5em;
+	bottom: 1.5em;
+	left: 1.5em;
+	box-sizing: border-box;
+	border: 0.25em solid black;
+}
+.fig-laje > div[class|="label"] {
+	display: none;
+}
+
+.fig-laje-1 .retangulo {
+}
+.fig-laje-2 .retangulo {
+	border-top: 0.75em double black;
+}
+
+
+/* .name-number-unit-list contains a list of variables like this:
+ *   x = [ 0.001 ] m
+ * Where...
+ *   "x = " is the .prefix (a span).
+ *   " m" is the .suffix (a span).
+ *   "[ 0.001 ]" is the value (either input or output).
+ * Each line containing a name-number-unit is one label element.
+ */
+.name-number-unit-list label {
+	display: block;
+}
+.name-number-unit-list label .prefix,
+.name-number-unit-list label input,
+.name-number-unit-list label output,
+.name-number-unit-list label .suffix {
+	display: inline-block;
+	vertical-align: baseline;
+}
+.name-number-unit-list label .prefix {
+	text-align: right;
+	width: 4em;
+}
+.name-number-unit-list label input,
+.name-number-unit-list label output {
+	text-align: right;
+	width: 6em;
+	margin: 0 1ex;
+}
+.name-number-unit-list label .suffix {
+	text-align: left;
+	width: 5em;
+}
+
+.name-number-unit-list label output {
+	/* <output> styles to match <input> ones. */
+	padding: 0.5em 0.6em;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* For debugging. */
+.name-number-unit-list label .prefix { background: #FFD; }
+.name-number-unit-list label input   { background: #FDD; }
+.name-number-unit-list label output  { background: #DDF; }
+.name-number-unit-list label .suffix { background: #DFF; }

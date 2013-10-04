@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cálculo de Lajes</title>
+	<meta name="author" content="Denilson Figueiredo de Sá - denilsonsa@gmail.com">
+	<link rel="stylesheet" type="text/css" href="laje.css">
+	<script src="laje.js" defer async></script>
+</head>
+<body>
+
+<div id="fig-laje-model" class="fig-laje">
+	<div class="retangulo"></div>
+	<div class="label-r">r</div>
+	<div class="label-1a">1</div>
+	<div class="label-1b">1</div>
+	<div class="label-2a">2</div>
+	<div class="label-2b">2</div>
+</div>
+
+<form id="laje">
+
+	<fieldset class="tipo-laje">
+		<legend>Tipo de laje</legend>
+		<div>Carregamento triangular</div>
+		<label><input type="radio" name="tipo-laje" value="1" > <span class="number"> 1</span></label>
+		<label><input type="radio" name="tipo-laje" value="2" > <span class="number"> 2</span></label>
+		<label><input type="radio" name="tipo-laje" value="3" > <span class="number"> 3</span></label>
+		<label><input type="radio" name="tipo-laje" value="4" > <span class="number"> 4</span></label>
+		<label><input type="radio" name="tipo-laje" value="5" > <span class="number"> 5</span></label>
+		<label><input type="radio" name="tipo-laje" value="6" > <span class="number"> 6</span></label>
+		<label><input type="radio" name="tipo-laje" value="7" > <span class="number"> 7</span></label>
+		<label><input type="radio" name="tipo-laje" value="8" > <span class="number"> 8</span></label>
+		<label><input type="radio" name="tipo-laje" value="9" > <span class="number"> 9</span></label>
+		<label><input type="radio" name="tipo-laje" value="10"> <span class="number">10</span></label>
+		<label><input type="radio" name="tipo-laje" value="11"> <span class="number">11</span></label>
+		<label><input type="radio" name="tipo-laje" value="12"> <span class="number">12</span></label>
+
+		<div>Carregamento retangular</div>
+		<label><input type="radio" name="tipo-laje" value="13"> <span class="number">13</span></label>
+		<label><input type="radio" name="tipo-laje" value="14"> <span class="number">14</span></label>
+		<label><input type="radio" name="tipo-laje" value="15"> <span class="number">15</span></label>
+		<label><input type="radio" name="tipo-laje" value="16"> <span class="number">16</span></label>
+		<label><input type="radio" name="tipo-laje" value="17"> <span class="number">17</span></label>
+		<label><input type="radio" name="tipo-laje" value="18"> <span class="number">18</span></label>
+		<label><input type="radio" name="tipo-laje" value="19"> <span class="number">19</span></label>
+		<label><input type="radio" name="tipo-laje" value="20"> <span class="number">20</span></label>
+		<label><input type="radio" name="tipo-laje" value="21"> <span class="number">21</span></label>
+		<label><input type="radio" name="tipo-laje" value="22"> <span class="number">22</span></label>
+	</fieldset>
+
+	<fieldset class="name-number-unit-list">
+		<legend>Parâmetros</legend>
+		<label><span class="prefix">a = </span><input type="number" min="0.00"  step="0.01"  size="6"><span class="suffix"> m</span></label>
+		<label><span class="prefix">b = </span><input type="number" min="0.00"  step="0.01"  size="6"><span class="suffix"> m</span></label>
+		<label><span class="prefix">q = </span><input type="number" min="0.000" step="0.001" size="6"><span class="suffix"> t / m²</span></label>
+	</fieldset>
+
+	<fieldset class="name-number-unit-list">
+		<legend>Resultados</legend>
+		<label><span class="prefix">Xa  = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Xa1 = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Xa2 = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Xb  = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Xb1 = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Ma  = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Mb  = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">Mr  = </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">M0  = ± </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">M01 = ± </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">M02 = ± </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label><span class="prefix">qaA = </span><output>0.00</output><span class="suffix"> tf / m</span></label>
+		<label><span class="prefix">qaE = </span><output>0.00</output><span class="suffix"> tf / m</span></label>
+		<label><span class="prefix">qbA = </span><output>0.00</output><span class="suffix"> tf / m</span></label>
+		<label><span class="prefix">qbE = </span><output>0.00</output><span class="suffix"> tf / m</span></label>
+	</fieldset>
+
+</form>
+
+<!--
+
+Ma   - Momento máximo positivio na direção "a".
+Mb   - Momento máximo positivio na direção "b".
++M01 - Momento normal à bissetriz do canto "1".
+-M01 - Momento segundo a bissetriz do canto "1".
++M02 - Momento normal à bissetriz do canto "2".
+-M02 - Momento segundo a bissetriz do canto "2".
++M0  - Momento normal à bissetriz do canto cujos lados são simplesmente apoiados.
+-M0  - Momento segundo a bissetriz do canto cujos lados são simplesmente apoiados.
+Mr   - Momento no bordo livre segundo a direção "b".
+
+Xa   - Momento negativo na direção "a".
+Xb   - Momento negativo na direção "b".
+Xa1  - Momento negativo na direção "a" e no bordo "1".
+Xa2  - Momento negativo na direção "a" e no bordo "2".
+Xb1  - Momento negativo na direção "b" e no canto "1".
+
+qaA  - Reação de apoio para o vão "a" no lado simplesmente apoiado.
+qaE  - Reação de apoio para o vão "a" no lado engastado.
+qbA  - Reação de apoio para o vão "a" no lado simplesmente apoiado.
+qbE  - Reação de apoio para o vão "a" no lado engastado.
+
+-->
+
+</body>
+</html>
