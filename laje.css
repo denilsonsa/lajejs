@@ -332,16 +332,6 @@ fieldset.tipo-laje label svg.fig-laje text {
 .diagrama {
 	position: relative;
 }
-.diagrama .fig-laje {
-	/* Precisely positioning one .fig-laje on top of one .fig-diagrama. */
-	position: absolute;
-	top: 50px;
-	left: 100px;
-	width: 200px;
-	height: 200px;
-	z-index: 2;
-}
-
 .fig-diagrama {
 	display: inline-block;
 }

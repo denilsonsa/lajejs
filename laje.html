@@ -9,32 +9,6 @@
 </head>
 <body>
 
-<svg id="fig-laje-model" class="fig-laje" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-
-	<line x1="20" y1="22" x2="80" y2="22" class="double-top" />
-	<line x1="88" y1="30" x2="88" y2="70" class="double-right" />
-	<line x1="20" y1="78" x2="80" y2="78" class="double-bottom" />
-	<line x1="12" y1="30" x2="12" y2="70" class="double-left" />
-
-	<line x1="20" y1="30" x2="80" y2="30" class="top" />
-	<line x1="80" y1="30" x2="80" y2="70" class="right" />
-	<line x1="20" y1="70" x2="80" y2="70" class="bottom" />
-	<line x1="20" y1="30" x2="20" y2="70" class="left" />
-
-	<text x="50" y="16" class="label-r label-topcenter"><tspan>r</tspan></text>
-
-	<text x="50" y="16" class="label-12center label-topcenter"   ><tspan>2</tspan></text>
-	<text x="50" y="84" class="label-12center label-bottomcenter"><tspan>1</tspan></text>
-
-	<text x="10" y="16" class="label-12corners label-topleft"    ><tspan>2</tspan></text>
-	<text x="90" y="16" class="label-12corners label-topright"   ><tspan>2</tspan></text>
-	<text x="10" y="84" class="label-12corners label-bottomleft" ><tspan>1</tspan></text>
-	<text x="90" y="84" class="label-12corners label-bottomright"><tspan>1</tspan></text>
-
-	<text x="10" y="16" class="label-1corners label-topleft" ><tspan>1</tspan></text>
-	<text x="90" y="16" class="label-1corners label-topright"><tspan>1</tspan></text>
-</svg>
-
 <form id="laje">
 
 	<fieldset class="tipo-laje">
@@ -81,8 +55,34 @@
 			</marker>
 
 			<g transform="translate(50 25)">
-				<!-- This rect is a placeholder, for debugging, should be completely overlaid by ".fig-laje". -->
-				<rect x="0" y="0" width="100" height="100" style="fill: red" />
+
+<!-- Nested svg elements! Yay! -->
+<svg id="fig-laje-model" class="fig-laje" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+
+	<line x1="20" y1="22" x2="80" y2="22" class="double-top" />
+	<line x1="88" y1="30" x2="88" y2="70" class="double-right" />
+	<line x1="20" y1="78" x2="80" y2="78" class="double-bottom" />
+	<line x1="12" y1="30" x2="12" y2="70" class="double-left" />
+
+	<line x1="20" y1="30" x2="80" y2="30" class="top" />
+	<line x1="80" y1="30" x2="80" y2="70" class="right" />
+	<line x1="20" y1="70" x2="80" y2="70" class="bottom" />
+	<line x1="20" y1="30" x2="20" y2="70" class="left" />
+
+	<text x="50" y="16" class="label-r label-topcenter"><tspan>r</tspan></text>
+
+	<text x="50" y="16" class="label-12center label-topcenter"   ><tspan>2</tspan></text>
+	<text x="50" y="84" class="label-12center label-bottomcenter"><tspan>1</tspan></text>
+
+	<text x="10" y="16" class="label-12corners label-topleft"    ><tspan>2</tspan></text>
+	<text x="90" y="16" class="label-12corners label-topright"   ><tspan>2</tspan></text>
+	<text x="10" y="84" class="label-12corners label-bottomleft" ><tspan>1</tspan></text>
+	<text x="90" y="84" class="label-12corners label-bottomright"><tspan>1</tspan></text>
+
+	<text x="10" y="16" class="label-1corners label-topleft" ><tspan>1</tspan></text>
+	<text x="90" y="16" class="label-1corners label-topright"><tspan>1</tspan></text>
+</svg>
+
 				<text x="104" y="50" class="label-right"><tspan>a</tspan></text>
 				<text x="50" y="104" class="label-bottom"><tspan>b</tspan></text>
 			</g>
