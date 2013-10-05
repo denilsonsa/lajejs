@@ -6,6 +6,10 @@ s|LOCATE [0-9]\+, *[0-9]\+ *:\? *||g
 s|PRINT "Unidade: [metrof/]\+";\? *:\? *||g
 s/[ \r]\+$//
 
+# Adding a command at the end to make the program quit.
+$a\
+SYSTEM
+
 # Deleting useless lines.
 /^CLEAR$/d
 /^SCREEN 12$/d
@@ -17,10 +21,6 @@ s/[ \r]\+$//
 /para outro tipo de laje/d
 /MENULAJE\.BAS/d
 /CABECALHO/,$ d
-
-
-# Finding linearInterp() usages.
-s|\([A-Z0-9]\+\) = \([A-Z0-9]\+\)(I - 1) + (\2(I) - \2(I - 1)) \* (\([A / B]\+\) - \([A-Z0-9]\+\)(I - 1)) / (\4(I) - \4(I - 1))|'\1 = linearInterp(\3, \2[i-1], \2[i], \4[i-1], \4[i]);|
 
 # Cleaning the input code.
 /INPUT/,/^$/ {
@@ -51,6 +51,12 @@ s|\([A-Z0-9]\+\) = \([A-Z0-9]\+\)(I - 1) + (\2(I) - \2(I - 1)) \* (\([A / B]\+\)
 	}
 	d
 }
+
+# Uncomment this to generate a valid .BAS output.
+b
+
+# Finding linearInterp() usages.
+s|\([A-Z0-9]\+\) = \([A-Z0-9]\+\)(I - 1) + (\2(I) - \2(I - 1)) \* (\([A / B]\+\) - \([A-Z0-9]\+\)(I - 1)) / (\4(I) - \4(I - 1))|'\1 = linearInterp(\3, \2[i-1], \2[i], \4[i-1], \4[i]);|
 
 # Finding tableLookup() usages.
 /^IF [AB/ ]\+ < [ASB]\+MIN/,/^$/ {
