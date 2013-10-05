@@ -73,6 +73,38 @@
 		<label><span class="prefix">q = </span><input type="number" min="0.000" step="0.001" size="6"><span class="suffix"> t / m²</span></label>
 	</fieldset>
 
+	<div class="diagrama">
+		<svg class="fig-diagrama" width="350" height="300" viewBox="0 0 175 150" preserveAspectRatio="xMidYMid">
+
+			<marker id="arrow-head" markerUnits="strokeWidth" markerWidth="3" markerHeight="3" viewBox="0 0 6 6" refX="4" refY="3" orient="auto">
+				<path d="M 0 0 L 6 3 L 0 6 z" />
+			</marker>
+
+			<g transform="translate(50 25)">
+				<!-- This rect is a placeholder, for debugging, should be completely overlaid by ".fig-laje". -->
+				<rect x="0" y="0" width="100" height="100" style="fill: red" />
+				<text x="104" y="50" class="label-right"><tspan>a</tspan></text>
+				<text x="50" y="104" class="label-bottom"><tspan>b</tspan></text>
+			</g>
+
+			<g transform="translate(15 55)">
+				<line x1="20" y1="0" x2="20" y2="40" />
+				<g class="triangular">
+					<line x1="20" y1="0" x2="0" y2="40" />
+					<!-- x2 is 1 unit less to account for the arrow head. -->
+					<line x1="0" y1="40" x2="19" y2="40" style="marker-end: url(#arrow-head)" />
+				</g>
+				<g class="retangular">
+					<line x1="0" y1="0" x2="0" y2="40" />
+					<!-- x2 is 1 unit less to account for the arrow head. -->
+					<line x1="0" y1="0" x2="19" y2="0" style="marker-end: url(#arrow-head)" />
+					<line x1="0" y1="40" x2="19" y2="40" style="marker-end: url(#arrow-head)" />
+				</g>
+				<text x="10" y="44" class="label-bottom"><tspan>q</tspan></text>
+			</g>
+		</svg>
+	</div>
+
 	<fieldset class="name-number-unit-list">
 		<legend>Resultados</legend>
 		<label><span class="prefix">Xa  =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>

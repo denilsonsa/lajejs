@@ -60,6 +60,9 @@ function onLoadHandler() {
 		var fig = newFigLaje(number);
 		label.appendChild(fig);
 	}
+	var fig = newFigLaje();
+	var diagrama = document.querySelector('form .diagrama');
+	diagrama.appendChild(fig);
 }
 
 window.addEventListener('load', onLoadHandler, false);

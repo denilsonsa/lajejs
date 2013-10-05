@@ -8,6 +8,12 @@ html, body {
 input, output {
 	font-size: 0.8em;
 }
+.fig-laje text,
+.fig-diagrama text {
+	font-size: 13px;
+	/* font-size without unit is valid in SVG. */
+	font-size: 13;
+}
 
 /* Input styles based on http://purecss.io/ */
 input[type="color"],
@@ -177,9 +183,6 @@ select:focus:invalid:focus {
 }
 .fig-laje text {
 	display: none;
-	font-size: 13px;
-	/* font-size without unit is valid in SVG. */
-	font-size: 13;
 }
 .fig-laje .label-topcenter,
 .fig-laje .label-bottomcenter {
@@ -258,6 +261,7 @@ fieldset.tipo-laje label input[type="radio"]:checked {
 	visibility: visible;
 }
 fieldset.tipo-laje label .number {
+	/* Positioning the number right in the middle of the icon. */
 	position: absolute;
 	z-index: 2;
 
@@ -278,6 +282,7 @@ fieldset.tipo-laje label svg.fig-laje {
 	height: 100px;
 }
 fieldset.tipo-laje label svg.fig-laje text {
+	/* Hiding all labels to make the icons look cleaner. */
 	display: none;
 }
 
@@ -323,11 +328,48 @@ fieldset.tipo-laje label svg.fig-laje text {
 	box-sizing: border-box;
 }
 
+/********************************************************************/
+.diagrama {
+	position: relative;
+}
+.diagrama .fig-laje {
+	/* Precisely positioning one .fig-laje on top of one .fig-diagrama. */
+	position: absolute;
+	top: 50px;
+	left: 100px;
+	width: 200px;
+	height: 200px;
+	z-index: 2;
+}
+
+.fig-diagrama {
+	display: inline-block;
+}
+.fig-diagrama line {
+	stroke: black;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.fig-diagrama .label-bottom,
+.fig-diagrama .label-bottom tspan {
+	text-anchor: middle;
+	dominant-baseline: text-before-edge;
+	alignment-baseline: text-before-edge;
+}
+.fig-diagrama .label-right,
+.fig-diagrama .label-right tspan {
+	text-anchor: start;
+	dominant-baseline: central;
+	alignment-baseline: central;
+}
+
 
 /********************************************************************/
 /* For debugging. */
 html, body { background: #CCC; }
 .fig-laje { background: #FFD; }
+.fig-diagrama { background: #DFF; }
+.diagrama .fig-laje { background: #FFD; }
 .name-number-unit-list label .prefix { background: #FFD; }
 .name-number-unit-list label input   { background: #FDD; }
 .name-number-unit-list label output  { background: #DDF; }
