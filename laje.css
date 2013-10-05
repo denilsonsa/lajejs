@@ -243,8 +243,9 @@ select:focus:invalid:focus {
 /* "Tipo de laje" selection through a gallery of icons.
  *
  * Note: I'd love to use flex boxes here, but the browser support is not mature
- * enough. Some older browsers require an outdated syntax, and the latest
- * Firefox still does not support flex-wrap.
+ * enough. Some older browsers require an outdated syntax, the latest Firefox
+ * still does not support flex-wrap, and it seems flex does not work in
+ * fieldset elements.
  * https://bugzilla.mozilla.org/show_bug.cgi?id=702508
  * http://caniuse.com/flexbox
  */
@@ -255,6 +256,11 @@ fieldset.tipo-laje label {
 }
 fieldset.tipo-laje label input[type="radio"] {
 	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 2em;
+	margin-left: -1em;
+	text-align: center;
 	visibility: hidden;
 }
 fieldset.tipo-laje label input[type="radio"]:checked {
