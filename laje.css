@@ -1,9 +1,9 @@
 /* Stylish */
 html, body {
 	background: white;
-	background: #CCC;  /* debug */
 	color: black;
-	font-family: sans-serif;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
 }
 input, output {
 	font-size: 0.8em;
@@ -90,11 +90,10 @@ select:focus:invalid:focus {
 }
 
 
-/* .fig-laje, parametric-based SVG graphics.
- */
+/********************************************************************/
+/* .fig-laje, parametric-based SVG graphics. */
 .fig-laje {
 	display: inline-block;
-	background: yellow;
 }
 .fig-laje .double-top,
 .fig-laje .double-right,
@@ -178,9 +177,9 @@ select:focus:invalid:focus {
 }
 .fig-laje text {
 	display: none;
-	font-size: 12px;
+	font-size: 13px;
 	/* font-size without unit is valid in SVG. */
-	font-size: 12;
+	font-size: 13;
 }
 .fig-laje .label-topcenter,
 .fig-laje .label-bottomcenter {
@@ -201,7 +200,9 @@ select:focus:invalid:focus {
 .fig-laje .label-topcenter tspan,
 .fig-laje .label-topright tspan {
 	/* text-after-edge does not work correctly in Chrome 30:
-	 * http://crbug.com/143990 */
+	 * http://crbug.com/143990
+	 * Thus, I'm falling back to basic baseline positioning.
+	 */
 	/*
 	alignment-baseline: text-after-edge;
 	dominant-baseline: text-after-edge;
@@ -219,10 +220,10 @@ select:focus:invalid:focus {
 .fig-laje-1  .label-12corners,
 .fig-laje-4  .label-12center,
 .fig-laje-8  .label-12center,
-.fig-laje-11  .label-1corners,
-.fig-laje-12  .label-1corners,
-.fig-laje-21  .label-1corners,
-.fig-laje-22  .label-1corners,
+.fig-laje-11 .label-1corners,
+.fig-laje-12 .label-1corners,
+.fig-laje-21 .label-1corners,
+.fig-laje-22 .label-1corners,
 .fig-laje-9  .label-r,
 .fig-laje-10 .label-r,
 .fig-laje-11 .label-r,
@@ -235,36 +236,53 @@ select:focus:invalid:focus {
 }
 
 
-/*
-.fig-laje {
+/********************************************************************/
+/* "Tipo de laje" selection through a gallery of icons.
+ *
+ * Note: I'd love to use flex boxes here, but the browser support is not mature
+ * enough. Some older browsers require an outdated syntax, and the latest
+ * Firefox still does not support flex-wrap.
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=702508
+ * http://caniuse.com/flexbox
+ */
+fieldset.tipo-laje label {
 	display: inline-block;
 	position: relative;
-	width: 5em;
-	height: 5em;
+	cursor: pointer;
 }
-
-.fig-laje .retangulo {
-	background: white;
+fieldset.tipo-laje label input[type="radio"] {
 	position: absolute;
-	top: 1.5em;
-	right: 1.5em;
-	bottom: 1.5em;
-	left: 1.5em;
-	box-sizing: border-box;
-	border: 0.25em solid black;
+	visibility: hidden;
 }
-.fig-laje > div[class|="label"] {
+fieldset.tipo-laje label input[type="radio"]:checked {
+	visibility: visible;
+}
+fieldset.tipo-laje label .number {
+	position: absolute;
+	z-index: 2;
+
+	top: 50%;
+	left: 50%;
+	width: 2em;
+	margin-left: -1em;
+	height: 1em;
+	margin-top: -0.5em;
+
+	text-align: center;
+	font-size: 24px;
+	line-height: 1.0;
+}
+fieldset.tipo-laje label svg.fig-laje {
+	display: block;
+	width: 100px;
+	height: 100px;
+}
+fieldset.tipo-laje label svg.fig-laje text {
 	display: none;
 }
 
-.fig-laje-1 .retangulo {
-}
-.fig-laje-2 .retangulo {
-	border-top: 0.75em double black;
-}
-*/
 
-
+/********************************************************************/
 /* .name-number-unit-list contains a list of variables like this:
  *   x = [ 0.001 ] m
  * Where...
@@ -305,7 +323,11 @@ select:focus:invalid:focus {
 	box-sizing: border-box;
 }
 
+
+/********************************************************************/
 /* For debugging. */
+html, body { background: #CCC; }
+.fig-laje { background: #FFD; }
 .name-number-unit-list label .prefix { background: #FFD; }
 .name-number-unit-list label input   { background: #FDD; }
 .name-number-unit-list label output  { background: #DDF; }
