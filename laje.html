@@ -44,7 +44,7 @@
 		<legend>Parâmetros</legend>
 		<label><span class="prefix">a = </span><input type="number" min="0.00"  step="0.01"  size="6"><span class="suffix"> m</span></label>
 		<label><span class="prefix">b = </span><input type="number" min="0.00"  step="0.01"  size="6"><span class="suffix"> m</span></label>
-		<label><span class="prefix">q = </span><input type="number" min="0.000" step="0.001" size="6"><span class="suffix"> t / m²</span></label>
+		<label><span class="prefix">q = </span><input type="number" min="0.000" step="0.001" size="6"><span class="suffix"> tf / m²</span></label>
 	</fieldset>
 
 	<div class="diagrama">
@@ -127,6 +127,21 @@
 </form>
 
 <!--
+
+Este programa baseia-se nas tabelas para cálculo de lajes retangulares
+formuladas por Kalmanock e publicadas no livro Novo Curso Pratico de Concreto
+Armado, volume 4, de Aderson Moreira da Rocha.
+
+Estas tabelas são baseadas na Teoria da Elasticidade, com coeficiente de
+Poisson nulo.
+
+Os esforcos calculados são os máximos, não sendo informado o ponto onde os
+mesmos ocorrem.
+
+Unidades: tonelada força e metro.
+
+
+
  1. Quatro bordos simplesmente apoiados
  2. Três bordos simplesmente apoiados e um engastado
  3. Três bordos simplesmente apoiados e um engastado
