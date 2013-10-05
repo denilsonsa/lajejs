@@ -6,9 +6,9 @@ s|LOCATE [0-9]\+, *[0-9]\+ *:\? *||g
 s|PRINT "Unidade: [metrof/]\+";\? *:\? *||g
 s/[ \r]\+$//
 
-# Adding a command at the end to make the program quit.
+# Adding a command at the end to make the program loop.
 $a\
-SYSTEM
+GOTO 1
 
 # Deleting useless lines.
 /^CLEAR$/d
@@ -24,36 +24,17 @@ SYSTEM
 
 # Cleaning the input code.
 /INPUT/,/^$/ {
-	# Reducing verboseness.
-	s|PRINT "Entre com valor positivo, em [metrosf/.]\+";\? *:\? *||g
-	s|PRINT "\.";\? *:\? *||g
-	s|PRINT CHR\$(253);\? *:\? *||g
-	s|PRINT STRING\$([0-9]\+, " ");\? *:\? *||g
-	s/[ \r]\+$//
-
-	# Append to the hold buffer.
-	H
-
-	# Last line, let's clear the hold buffer and process the multi-line block
-	# in the pattern buffer.
 	/^$/ {
-		s/.*//
-		x
-
-		# \1 GOTO number to the INPUT command
-		# \2 PRINT/INPUT command
-		# \3 var name (UPPERCASE)
-		# \4 GOTO if <= 0
-		# \5 GOTO if ok
-		s|\([0-9]\+\) \(PRINT ". ="[^\n]\+INPUT " ", \([ABQ]\)\)\nIF \3 <= 0 THEN \([0-9]\+\) ELSE \([0-9]\+\)\n\4\nGOTO \1\n\5|\2|g
-
+		s|.*|INPUT "a,b,q = ", A, B, Q\nIF A = 0 THEN SYSTEM\n\n|
 		p
 	}
 	d
 }
 
 # Uncomment this to generate a valid .BAS output.
-b
+# It will "branch" to the end of the script, effectively skipping the next
+# lines of sed code.
+#b
 
 # Finding linearInterp() usages.
 s|\([A-Z0-9]\+\) = \([A-Z0-9]\+\)(I - 1) + (\2(I) - \2(I - 1)) \* (\([A / B]\+\) - \([A-Z0-9]\+\)(I - 1)) / (\4(I) - \4(I - 1))|'\1 = linearInterp(\3, \2[i-1], \2[i], \4[i-1], \4[i]);|
