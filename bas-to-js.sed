@@ -1,5 +1,7 @@
 #!/bin/sed -f
 
+s/[ \r]\+$//
+
 # Version 1: converts to a series of arrays, very similar to the original Basic code.
 #s/(/[/g
 #s/)/]/g
@@ -12,7 +14,8 @@ s/([0-9]\+) = /: /g
 s/^/{ /
 s/ *$/ } ,/
 
-# Remember to remove the comma from the last line.
+# Removing the comma from the last line.
+$ s/ ,$//
 
 # Tip: After running this, run the following command in Vim:
 # :Tabularize /,
