@@ -375,8 +375,13 @@ select:focus:invalid:focus {
 .name-number-unit-list label input,
 .name-number-unit-list label output {
 	text-align: right;
-	width: 6em;
 	margin: 0 1ex;
+}
+.name-number-unit-list label input {
+	width: 6em;
+}
+.name-number-unit-list label output {
+	min-width: 6em;
 }
 .name-number-unit-list label .suffix {
 	text-align: left;
