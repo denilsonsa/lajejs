@@ -153,9 +153,11 @@ function recalculateValues(form) {
 			msg = ret.msg;
 			delete ret.msg; // Deleting ret.msg because of the for..in loop below.
 
-			for (name in ret) {
-				visible_outputs[name] = true;
-				form[name].value = ret[name].toFixed(2);
+			for (var name in ret) {
+				if (ret.hasOwnProperty(name)) {
+					visible_outputs[name] = true;
+					form[name].value = ret[name].toFixed(2);
+				}
 			}
 		} else {
 			// Invalid values.
@@ -173,12 +175,14 @@ function recalculateValues(form) {
 	form.msg.value = msg || '';
 
 	// Showing/hiding the appropriate fields.
-	for (name in visible_outputs) {
-		var parent_label = form[name].parentNode;
-		if (visible_outputs[name]) {
-			parent_label.classList.remove('hidden');
-		} else {
-			parent_label.classList.add('hidden');
+	for (var name in visible_outputs) {
+		if (visible_outputs.hasOwnProperty(name)) {
+			var parent_label = form[name].parentNode;
+			if (visible_outputs[name]) {
+				parent_label.classList.remove('hidden');
+			} else {
+				parent_label.classList.add('hidden');
+			}
 		}
 	}
 }
