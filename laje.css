@@ -302,12 +302,12 @@ select:focus:invalid:focus {
  * https://bugzilla.mozilla.org/show_bug.cgi?id=702508
  * http://caniuse.com/flexbox
  */
-fieldset.tipo-laje label {
+.tipo-laje label {
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
 }
-fieldset.tipo-laje label input[type="radio"] {
+.tipo-laje label input[type="radio"] {
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -316,10 +316,10 @@ fieldset.tipo-laje label input[type="radio"] {
 	text-align: center;
 	visibility: hidden;
 }
-fieldset.tipo-laje label input[type="radio"]:checked {
+.tipo-laje label input[type="radio"]:checked {
 	visibility: visible;
 }
-fieldset.tipo-laje label .number {
+.tipo-laje label .number {
 	/* Positioning the number right in the middle of the icon. */
 	position: absolute;
 	z-index: 2;
@@ -335,12 +335,12 @@ fieldset.tipo-laje label .number {
 	font-size: 24px;
 	line-height: 1.0;
 }
-fieldset.tipo-laje label svg.fig-laje {
+.tipo-laje label svg.fig-laje {
 	display: block;
 	width: 100px;
 	height: 100px;
 }
-fieldset.tipo-laje label svg.fig-laje text {
+.tipo-laje label svg.fig-laje text {
 	/* Hiding all labels to make the icons look cleaner. */
 	display: none;
 }
@@ -392,6 +392,20 @@ fieldset.tipo-laje label svg.fig-laje text {
 
 .name-number-unit-list output[name="msg"] {
 	color: #800000;
+}
+
+/********************************************************************/
+/* Smaller size? */
+.halfsize .tipo-laje label svg.fig-laje {
+	width: 50px;
+	height: 50px;
+}
+.halfsize .tipo-laje label .number {
+	font-size: 12px;
+}
+.halfsize svg.fig-diagrama {
+	width: 175px;
+	height: 150px;
 }
 
 /********************************************************************/

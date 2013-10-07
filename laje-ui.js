@@ -62,13 +62,13 @@ function addFormInputOrChangeEventListener(form, func) {
 				type != 'radio' &&
 				type != 'file') return;
 		}
-		// Now, the target one of:
+		// Here, the event target one of:
 		//   <select>
 		//   <input> of type checkbox, radio or file
 		//   an unknown, unexpected element.
+		// Thus, we should call the event handler.
 		func.call(this, ev);
 	}, false);
-
 }
 
 
