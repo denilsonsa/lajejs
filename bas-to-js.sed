@@ -10,12 +10,19 @@ s/[ \r]\+$//
 
 # Version 2: converts to an Array of objects, using JavaScript notation.
 s/:/,/g
+s/ = \(\.[0-9]\)/ = 0\1/g
+s/\( = [0-9]\.[0-9]\),/\10,/g
 s/([0-9]\+) = /: /g
 s/^/{ /
 s/ *$/ } ,/
+
+# To lowercase:
+y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
+# Or, as a GNU sed extension:
+# s/\(.*\)/\L\1/
 
 # Removing the comma from the last line.
 $ s/ ,$//
 
 # Tip: After running this, run the following command in Vim:
-# :Tabularize /,
+# :Tabularize /[:,]/r0c1
