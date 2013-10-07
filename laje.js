@@ -7,9 +7,9 @@ function linearInterp(x, x1, x2, y1, y2) {
 	return y1 + (y2 - y1) * (x - x1) / (x2 - x1);
 }
 
-// Receives a table, a pair of Strings (key_name and value_name) and a Number
-// (key). Looks up the key in the key_name column and returns a linear
-// interpolation of values from value_name column.
+// Receives a table, a string (key_name), a list of strings (value_names) and a
+// Number (key). Looks up the key in the key_name column and returns a linear
+// interpolation of values from value_names columns.
 //
 // The table is an Array of objects. Each column/cell is an attribute of the
 // object.
@@ -20,27 +20,46 @@ function linearInterp(x, x1, x2, y1, y2) {
 //
 // Yeah, I know, it seems a bit confusing. But at the same time it is simple
 // and flexible.
-function tableLookup(table, key_name, value_name, key) {
+function tableLookup(table, key_name, value_names, key) {
+	var ret = {
+		overLimit: false,
+		underLimit: false
+	};
+
 	if (key < table[1][key_name]) {
 		// The key is smaller than row 1, using the fallback value from row 0.
-		return table[0][value_name];
+		ret.underLimit = true;
+		ret.limit = table[1][key_name];
+		for (var j = 0; j < value_names.length; j++) {
+			var name = value_names[j];
+			ret[name] = table[0][name];
+		}
+		return ret;
 	} else {
 		// Looking up the key starting between rows 1 and 2.
 		for (var i = 2; i < table.length; i++) {
 			if (table[i][key_name] >= key) {
-				return linearInterp(
-						key,
-						table[i - 1][key_name  ], table[i][key_name  ],
-						table[i - 1][value_name], table[i][value_name]);
+				for (var j = 0; j < value_names.length; j++) {
+					var name = value_names[j];
+					ret[name] = linearInterp(
+							key,
+							table[i - 1][key_name], table[i][key_name],
+							table[i - 1][name], table[i][name]);
+				}
+				return ret;
 			}
 		}
 	}
 	// Key not found, it means it is larger than the maximum row value. Using
 	// the maximum value.
-	console.error(
-			"tableLookup: looking up a key outside of the range of the table. key = ",
-			key, " max key value = ", table[table.length - 1][key_name]);
-	return table[table.length - 1][value_name];
+	var last = table.length - 1;
+	ret.overLimit = true;
+	ret.limit = table[last][key_name];
+	for (var j = 0; j < value_names.length; j++) {
+		var name = value_names[j];
+		ret[name] = table[last][name];
+	}
+	return ret;
 }
 
 
@@ -97,21 +116,17 @@ function lajeTipo1(a, b, q) {
 		relacao = 'b/a';
 	}
 
-	var cma  = tableLookup(table, key_name, 'cma' , key);
-	var cmb  = tableLookup(table, key_name, 'cmb' , key);
-	var cm01 = tableLookup(table, key_name, 'cm01', key);
-	var cm02 = tableLookup(table, key_name, 'cm02', key);
+	var data = tableLookup(table, key_name, ['cma', 'cmb', 'cm01', 'cm02'], key);
 
 	var ret = {
-		ma:  cma  / 10000 * q * smallest_side * smallest_side,
-		mb:  cmb  / 10000 * q * smallest_side * smallest_side,
-		m01: cm01 / 10000 * q * smallest_side * smallest_side,
-		m02: cm02 / 10000 * q * smallest_side * smallest_side
+		ma:  data.cma  / 10000 * q * smallest_side * smallest_side,
+		mb:  data.cmb  / 10000 * q * smallest_side * smallest_side,
+		m01: data.cm01 / 10000 * q * smallest_side * smallest_side,
+		m02: data.cm02 / 10000 * q * smallest_side * smallest_side
 	};
 
-	var key_min = table[1][key_name]
-	if (key < key_min) {
-		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Esforços calculados para uma relação (' + relacao + ') = ' + key_min.toFixed(2) + '.';
+	if (data.underLimit) {
+		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Esforços calculados para uma relação (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
 		ret.msg = msg;
 	}
 	return ret;
@@ -146,28 +161,17 @@ function lajeTipo10(a, b, q) {
 	];
 
 	var key = a / b;
-
-	var cxa = tableLookup(asb, 'asb', 'cxa', key);
-	var cma = tableLookup(asb, 'asb', 'cma', key);
-	var cmb = tableLookup(asb, 'asb', 'cmb', key);
-	var cmr = tableLookup(asb, 'asb', 'cmr', key);
+	var data = tableLookup(asb, 'asb', ['cxa', 'cma', 'cmb', 'cmr'], key);
 
 	var ret = {
-		xa: cxa / 10000 * q * b * b,
-		ma: cma / 10000 * q * b * b,
-		mb: cmb / 10000 * q * b * b,
-		mr: cmr / 10000 * q * b * b
+		xa: data.cxa / 10000 * q * b * b,
+		ma: data.cma / 10000 * q * b * b,
+		mb: data.cmb / 10000 * q * b * b,
+		mr: data.cmr / 10000 * q * b * b
 	};
 
-
-	var key_min = asb[1].asb;
-	var key_max = asb[asb.length - 1].asb;
-	if (key < key_min) {
-		var msg = '(a/b) = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (a/b) = ' + key_min.toFixed(2) + '.';
-		ret.msg = msg;
-	}
-	if (key > key_max) {
-		var msg = '(a/b) = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (a/b) = ' + key_max.toFixed(2) + '.';
+	if (data.underLimit || data.overLimit) {
+		var msg = '(a/b) = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (a/b) = ' + data.limit.toFixed(2) + '.';
 		ret.msg = msg;
 	}
 	return ret;
