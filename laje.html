@@ -42,11 +42,13 @@
 		<label title="Três bordos engastados e um livre"                         ><input type="radio" name="tipo" value="22"> <span class="number">22</span></label>
 	</fieldset>
 
+	<div class="fake-flex">
+
 	<fieldset class="name-number-unit-list">
 		<legend>Parâmetros</legend>
-		<label><span class="prefix">a = </span><input name="a" type="number" required min="0.00"  step="0.01" ><span class="suffix"> m</span></label>
-		<label><span class="prefix">b = </span><input name="b" type="number" required min="0.00"  step="0.01" ><span class="suffix"> m</span></label>
-		<label><span class="prefix">q = </span><input name="q" type="number" required min="0.000" step="0.001"><span class="suffix"> tf / m²</span></label>
+		<label><span class="prefix">a = </span><input name="a" type="number" required min="0.00"  step="0.01"  value="50"><span class="suffix"> m</span></label>
+		<label><span class="prefix">b = </span><input name="b" type="number" required min="0.00"  step="0.01"  value="50"><span class="suffix"> m</span></label>
+		<label><span class="prefix">q = </span><input name="q" type="number" required min="0.000" step="0.001" value="50"><span class="suffix"> tf / m²</span></label>
 	</fieldset>
 
 	<div class="diagrama">
@@ -128,27 +130,26 @@
 		<output name="msg"></output>
 	</fieldset>
 
+	</div> <!-- .fake-flex -->
+
+	<fieldset>
+		<legend>Sobre este aplicativo</legend>
+
+		<p>Este aplicativo baseia-se nas tabelas para cálculo de lajes
+		retangulares formuladas por Kalmanock e publicadas no livro Novo Curso
+		Prático de Concreto Armado, volume 4, de Aderson Moreira da Rocha.
+		</p>
+
+		<p>Estas tabelas são baseadas na Teoria da Elasticidade, com
+		coeficiente de Poisson nulo.</p>
+
+		<p>Os esforcos calculados são os máximos, não sendo informado o ponto
+		onde os mesmos ocorrem.</p>
+
+		<p>Unidades: tonelada força e metro.</p>
+	</fieldset>
+
 </form>
-
-<p>
-Este aplicativo baseia-se nas tabelas para cálculo de lajes retangulares
-formuladas por Kalmanock e publicadas no livro Novo Curso Prático de Concreto
-Armado, volume 4, de Aderson Moreira da Rocha.
-</p>
-
-<p>
-Estas tabelas são baseadas na Teoria da Elasticidade, com coeficiente de
-Poisson nulo.
-</p>
-
-<p>
-Os esforcos calculados são os máximos, não sendo informado o ponto onde os
-mesmos ocorrem.
-</p>
-
-<p>
-Unidades: tonelada força e metro.
-</p>
 
 
 <!--

@@ -409,6 +409,12 @@ select:focus:invalid:focus {
 }
 
 /********************************************************************/
+.fake-flex > * {
+	display: inline-block;
+	vertical-align: top;
+}
+
+/********************************************************************/
 /* For debugging. */
 /*
 html, body { background: #CCC; }
