@@ -14,38 +14,39 @@
 
 	<fieldset class="tipo-laje">
 		<legend>Tipo de laje</legend>
+		<!-- Note: JavaScript will dynamically add an SVG graphic inside each of these <label> elements. -->
 		<div>Carregamento triangular</div>
-		<label><input type="radio" name="tipo-laje" value="1" > <span class="number"> 1</span></label>
-		<label><input type="radio" name="tipo-laje" value="2" > <span class="number"> 2</span></label>
-		<label><input type="radio" name="tipo-laje" value="3" > <span class="number"> 3</span></label>
-		<label><input type="radio" name="tipo-laje" value="4" > <span class="number"> 4</span></label>
-		<label><input type="radio" name="tipo-laje" value="5" > <span class="number"> 5</span></label>
-		<label><input type="radio" name="tipo-laje" value="6" > <span class="number"> 6</span></label>
-		<label><input type="radio" name="tipo-laje" value="7" > <span class="number"> 7</span></label>
-		<label><input type="radio" name="tipo-laje" value="8" > <span class="number"> 8</span></label>
-		<label><input type="radio" name="tipo-laje" value="9" > <span class="number"> 9</span></label>
-		<label><input type="radio" name="tipo-laje" value="10"> <span class="number">10</span></label>
-		<label><input type="radio" name="tipo-laje" value="11"> <span class="number">11</span></label>
-		<label><input type="radio" name="tipo-laje" value="12"> <span class="number">12</span></label>
+		<label title="Quatro bordos simplesmente apoiados"                       ><input type="radio" name="tipo" value="1" > <span class="number"> 1</span></label>
+		<label title="Três bordos simplesmente apoiados e um engastado"          ><input type="radio" name="tipo" value="2" > <span class="number"> 2</span></label>
+		<label title="Três bordos simplesmente apoiados e um engastado"          ><input type="radio" name="tipo" value="3" > <span class="number"> 3</span></label>
+		<label title="Dois bordos simplesmente apoiados e dois engastados"       ><input type="radio" name="tipo" value="4" > <span class="number"> 4</span></label>
+		<label title="Dois bordos simplesmente apoiados e dois engastados"       ><input type="radio" name="tipo" value="5" > <span class="number"> 5</span></label>
+		<label title="Um bordo simplesmente apoiado e três engastados"           ><input type="radio" name="tipo" value="6" > <span class="number"> 6</span></label>
+		<label title="Um bordo simplesmente apoiado e três engastados"           ><input type="radio" name="tipo" value="7" > <span class="number"> 7</span></label>
+		<label title="Quatro bordos engastados"                                  ><input type="radio" name="tipo" value="8" > <span class="number"> 8</span></label>
+		<label title="Três bordos simplesmente apoiados e um livre"              ><input type="radio" name="tipo" value="9" > <span class="number"> 9</span></label>
+		<label title="Dois bordos simplesmente apoiados, um engastado e um livre"><input type="radio" name="tipo" value="10"> <span class="number">10</span></label>
+		<label title="Um bordo simplesmente apoiado, dois engastados e um livre" ><input type="radio" name="tipo" value="11"> <span class="number">11</span></label>
+		<label title="Três bordos engastados e um livre"                         ><input type="radio" name="tipo" value="12"> <span class="number">12</span></label>
 
 		<div>Carregamento retangular</div>
-		<label><input type="radio" name="tipo-laje" value="13"> <span class="number">13</span></label>
-		<label><input type="radio" name="tipo-laje" value="14"> <span class="number">14</span></label>
-		<label><input type="radio" name="tipo-laje" value="15"> <span class="number">15</span></label>
-		<label><input type="radio" name="tipo-laje" value="16"> <span class="number">16</span></label>
-		<label><input type="radio" name="tipo-laje" value="17"> <span class="number">17</span></label>
-		<label><input type="radio" name="tipo-laje" value="18"> <span class="number">18</span></label>
-		<label><input type="radio" name="tipo-laje" value="19"> <span class="number">19</span></label>
-		<label><input type="radio" name="tipo-laje" value="20"> <span class="number">20</span></label>
-		<label><input type="radio" name="tipo-laje" value="21"> <span class="number">21</span></label>
-		<label><input type="radio" name="tipo-laje" value="22"> <span class="number">22</span></label>
+		<label title="Quatro bordos simplesmente apoiados"                       ><input type="radio" name="tipo" value="13"> <span class="number">13</span></label>
+		<label title="Três bordos simplesmente apoiados e um engastado"          ><input type="radio" name="tipo" value="14"> <span class="number">14</span></label>
+		<label title="Dois bordos simplesmente apoiados e dois engastados"       ><input type="radio" name="tipo" value="15"> <span class="number">15</span></label>
+		<label title="Dois bordos simplesmente apoiados e dois engastados"       ><input type="radio" name="tipo" value="16"> <span class="number">16</span></label>
+		<label title="Um bordo simplesmente apoiado e três engastados"           ><input type="radio" name="tipo" value="17"> <span class="number">17</span></label>
+		<label title="Quatro bordos engastados"                                  ><input type="radio" name="tipo" value="18"> <span class="number">18</span></label>
+		<label title="Três bordos simplesmente apoiados e um livre"              ><input type="radio" name="tipo" value="19"> <span class="number">19</span></label>
+		<label title="Dois bordos simplesmente apoiados, um engastado e um livre"><input type="radio" name="tipo" value="20"> <span class="number">20</span></label>
+		<label title="Um bordo simplesmente apoiado, dois engastados e um livre" ><input type="radio" name="tipo" value="21"> <span class="number">21</span></label>
+		<label title="Três bordos engastados e um livre"                         ><input type="radio" name="tipo" value="22"> <span class="number">22</span></label>
 	</fieldset>
 
 	<fieldset class="name-number-unit-list">
 		<legend>Parâmetros</legend>
-		<label><span class="prefix">a = </span><input type="number" min="0.00"  step="0.01"  size="6"><span class="suffix"> m</span></label>
-		<label><span class="prefix">b = </span><input type="number" min="0.00"  step="0.01"  size="6"><span class="suffix"> m</span></label>
-		<label><span class="prefix">q = </span><input type="number" min="0.000" step="0.001" size="6"><span class="suffix"> tf / m²</span></label>
+		<label><span class="prefix">a = </span><input name="a" type="number" required min="0.00"  step="0.01" ><span class="suffix"> m</span></label>
+		<label><span class="prefix">b = </span><input name="b" type="number" required min="0.00"  step="0.01" ><span class="suffix"> m</span></label>
+		<label><span class="prefix">q = </span><input name="q" type="number" required min="0.000" step="0.001"><span class="suffix"> tf / m²</span></label>
 	</fieldset>
 
 	<div class="diagrama">
@@ -58,6 +59,7 @@
 			<g transform="translate(50 25)">
 
 <!-- Nested svg elements! Yay! -->
+<!-- Note: JavaScript will dynamically copy this <svg> element to other places of this page. -->
 <svg id="fig-laje-model" class="fig-laje" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 
 	<line x1="20" y1="22" x2="80" y2="22" class="double-top" />
@@ -108,67 +110,48 @@
 
 	<fieldset class="name-number-unit-list">
 		<legend>Resultados</legend>
-		<label title="Momento negativo na direção 'a'"                            ><span class="prefix">Xa  =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento negativo na direção 'a' e no bordo '1'"             ><span class="prefix">Xa1 =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento negativo na direção 'a' e no bordo '2'"             ><span class="prefix">Xa2 =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento negativo na direção 'b'"                            ><span class="prefix">Xb  =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento negativo na direção 'b' e no canto '1'"             ><span class="prefix">Xb1 =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento máximo positivio na direção 'a'"                    ><span class="prefix">Ma  =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento máximo positivio na direção 'b'"                    ><span class="prefix">Mb  =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Momento no bordo livre segundo a direção 'b'"               ><span class="prefix">Mr  =   </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="TODO: write me!"                                            ><span class="prefix">M0  = ± </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="TODO: write me!"                                            ><span class="prefix">M01 = ± </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="TODO: write me!"                                            ><span class="prefix">M02 = ± </span><output>0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
-		<label title="Reação de apoio para o vão 'a' no lado simplesmente apoiado"><span class="prefix">qaA =   </span><output>0.00</output><span class="suffix"> tf / m</span></label>
-		<label title="Reação de apoio para o vão 'a' no lado engastado"           ><span class="prefix">qaE =   </span><output>0.00</output><span class="suffix"> tf / m</span></label>
-		<label title="Reação de apoio para o vão 'b' no lado simplesmente apoiado"><span class="prefix">qbA =   </span><output>0.00</output><span class="suffix"> tf / m</span></label>
-		<label title="Reação de apoio para o vão 'b' no lado engastado"           ><span class="prefix">qbE =   </span><output>0.00</output><span class="suffix"> tf / m</span></label>
+		<label title="Momento negativo na direção 'a'"                            ><span class="prefix">Xa  =   </span><output name="xa" >0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento negativo na direção 'a' e no bordo '1'"             ><span class="prefix">Xa1 =   </span><output name="xa1">0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento negativo na direção 'a' e no bordo '2'"             ><span class="prefix">Xa2 =   </span><output name="xa2">0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento negativo na direção 'b'"                            ><span class="prefix">Xb  =   </span><output name="xb" >0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento negativo na direção 'b' e no canto '1'"             ><span class="prefix">Xb1 =   </span><output name="xb1">0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento máximo positivio na direção 'a'"                    ><span class="prefix">Ma  =   </span><output name="ma" >0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento máximo positivio na direção 'b'"                    ><span class="prefix">Mb  =   </span><output name="mb" >0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Momento no bordo livre segundo a direção 'b'"               ><span class="prefix">Mr  =   </span><output name="mr" >0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="TODO: write me!"                                            ><span class="prefix">M0  = ± </span><output name="m0" >0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="TODO: write me!"                                            ><span class="prefix">M01 = ± </span><output name="m01">0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="TODO: write me!"                                            ><span class="prefix">M02 = ± </span><output name="m02">0.00</output><span class="suffix"> tf ⋅ m / m</span></label>
+		<label title="Reação de apoio para o vão 'a' no lado simplesmente apoiado"><span class="prefix">qaA =   </span><output name="qaa">0.00</output><span class="suffix"> tf / m</span></label>
+		<label title="Reação de apoio para o vão 'a' no lado engastado"           ><span class="prefix">qaE =   </span><output name="qae">0.00</output><span class="suffix"> tf / m</span></label>
+		<label title="Reação de apoio para o vão 'b' no lado simplesmente apoiado"><span class="prefix">qbA =   </span><output name="qba">0.00</output><span class="suffix"> tf / m</span></label>
+		<label title="Reação de apoio para o vão 'b' no lado engastado"           ><span class="prefix">qbE =   </span><output name="qbe">0.00</output><span class="suffix"> tf / m</span></label>
+		<output name="msg"></output>
 	</fieldset>
 
 </form>
 
-<!--
-
-Este programa baseia-se nas tabelas para cálculo de lajes retangulares
-formuladas por Kalmanock e publicadas no livro Novo Curso Pratico de Concreto
+<p>
+Este aplicativo baseia-se nas tabelas para cálculo de lajes retangulares
+formuladas por Kalmanock e publicadas no livro Novo Curso Prático de Concreto
 Armado, volume 4, de Aderson Moreira da Rocha.
+</p>
 
+<p>
 Estas tabelas são baseadas na Teoria da Elasticidade, com coeficiente de
 Poisson nulo.
+</p>
 
+<p>
 Os esforcos calculados são os máximos, não sendo informado o ponto onde os
 mesmos ocorrem.
+</p>
 
+<p>
 Unidades: tonelada força e metro.
+</p>
 
 
-
- 1. Quatro bordos simplesmente apoiados
- 2. Três bordos simplesmente apoiados e um engastado
- 3. Três bordos simplesmente apoiados e um engastado
- 4. Dois bordos simplesmente apoiados e dois engastados
- 5. Dois bordos simplesmente apoiados e dois engastados
- 6. Um bordo simplesmente apoiado e três engastados
- 7. Um bordo simplesmente apoiado e três engastados
- 8. Quatro bordos engastados
- 9. Três bordos simplesmente apoiados e um livre
-10. Dois bordos simplesmente apoiados, um engastado e um livre
-11. Um bordo simplesmente apoiado, dois engastados e um livre
-12. Três bordos engastados e um livre
-
-13. Quatro bordos simplesmente apoiados
-14. Três bordos simplesmente apoiados e um engastado
-15. Dois bordos simplesmente apoiados e dois engastados
-16. Dois bordos simplesmente apoiados e dois engastados
-17. Um bordo simplesmente apoiado e três engastados
-18. Quatro bordos engastados
-19. Três bordos simplesmente apoiados e um livre
-20. Dois bordos simplesmente apoiados, um engastado e um livre
-21. Um bordo simplesmente apoiado, dois engastados e um livre
-22. Três bordos engastados e um livre
-
-
-
+<!--
 
 Ma   - Momento máximo positivio na direção 'a'
 Mb   - Momento máximo positivio na direção 'b'

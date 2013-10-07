@@ -98,16 +98,18 @@ function lajeTipo1(a, b, q) {
 	var cmb  = tableLookup(table, key_name, 'cmb' , key);
 	var cm01 = tableLookup(table, key_name, 'cm01', key);
 	var cm02 = tableLookup(table, key_name, 'cm02', key);
-	var ma  = cma  / 10000 * q * smallest_side * smallest_side;
-	var mb  = cmb  / 10000 * q * smallest_side * smallest_side;
-	var m01 = cm01 / 10000 * q * smallest_side * smallest_side;
-	var m02 = cm02 / 10000 * q * smallest_side * smallest_side;
+
+	var ret = {
+		ma:  cma  / 10000 * q * smallest_side * smallest_side,
+		mb:  cmb  / 10000 * q * smallest_side * smallest_side,
+		m01: cm01 / 10000 * q * smallest_side * smallest_side,
+		m02: cm02 / 10000 * q * smallest_side * smallest_side
+	};
 
 	var key_min = table[1][key_name]
 	if (key < key_min) {
-		// TODO: Show this to the user!
-		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Esforços calculados para uma relação (' + relacao + ') = ' + asbmin.toFixed(2) + '.';
-		console.log(msg);
+		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Esforços calculados para uma relação (' + relacao + ') = ' + key_min.toFixed(2) + '.';
+		ret.msg = msg;
 	}
-	// TODO: return something.
+	return ret;
 }

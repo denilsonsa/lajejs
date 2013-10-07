@@ -240,6 +240,59 @@ select:focus:invalid:focus {
 
 
 /********************************************************************/
+.diagrama {
+	position: relative;
+}
+.fig-diagrama {
+	display: inline-block;
+}
+.fig-diagrama line {
+	stroke: black;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+.fig-diagrama .label-bottom,
+.fig-diagrama .label-bottom tspan {
+	text-anchor: middle;
+	dominant-baseline: text-before-edge;
+	alignment-baseline: text-before-edge;
+}
+.fig-diagrama .label-right,
+.fig-diagrama .label-right tspan {
+	text-anchor: start;
+	dominant-baseline: central;
+	alignment-baseline: central;
+}
+.fig-laje-1  .retangular,
+.fig-laje-2  .retangular,
+.fig-laje-3  .retangular,
+.fig-laje-4  .retangular,
+.fig-laje-5  .retangular,
+.fig-laje-6  .retangular,
+.fig-laje-7  .retangular,
+.fig-laje-8  .retangular,
+.fig-laje-9  .retangular,
+.fig-laje-10 .retangular,
+.fig-laje-11 .retangular,
+.fig-laje-12 .retangular,
+.fig-laje-13 .triangular,
+.fig-laje-14 .triangular,
+.fig-laje-15 .triangular,
+.fig-laje-16 .triangular,
+.fig-laje-17 .triangular,
+.fig-laje-18 .triangular,
+.fig-laje-19 .triangular,
+.fig-laje-20 .triangular,
+.fig-laje-21 .triangular,
+.fig-laje-22 .triangular {
+	display: none;
+}
+.fig-diagrama.hidden * {
+	display: none;
+}
+
+
+/********************************************************************/
 /* "Tipo de laje" selection through a gallery of icons.
  *
  * Note: I'd love to use flex boxes here, but the browser support is not mature
@@ -305,6 +358,9 @@ fieldset.tipo-laje label svg.fig-laje text {
 .name-number-unit-list label {
 	display: block;
 }
+.name-number-unit-list label.hidden {
+	display: none;
+}
 .name-number-unit-list label .prefix,
 .name-number-unit-list label input,
 .name-number-unit-list label output,
@@ -334,34 +390,13 @@ fieldset.tipo-laje label svg.fig-laje text {
 	box-sizing: border-box;
 }
 
-/********************************************************************/
-.diagrama {
-	position: relative;
+.name-number-unit-list output[name="msg"] {
+	color: #800000;
 }
-.fig-diagrama {
-	display: inline-block;
-}
-.fig-diagrama line {
-	stroke: black;
-	stroke-width: 2;
-	stroke-linecap: round;
-}
-.fig-diagrama .label-bottom,
-.fig-diagrama .label-bottom tspan {
-	text-anchor: middle;
-	dominant-baseline: text-before-edge;
-	alignment-baseline: text-before-edge;
-}
-.fig-diagrama .label-right,
-.fig-diagrama .label-right tspan {
-	text-anchor: start;
-	dominant-baseline: central;
-	alignment-baseline: central;
-}
-
 
 /********************************************************************/
 /* For debugging. */
+/*
 html, body { background: #CCC; }
 .fig-laje { background: #FFD; }
 .fig-diagrama { background: #DFF; }
@@ -370,3 +405,4 @@ html, body { background: #CCC; }
 .name-number-unit-list label input   { background: #FDD; }
 .name-number-unit-list label output  { background: #DDF; }
 .name-number-unit-list label .suffix { background: #DFF; }
+*/
