@@ -112,7 +112,8 @@ function setFigLajeNumber(elem, number) {
 // values, calls the required backend function, shows the results to the user.
 function recalculateValues(form) {
 	var functions = {
-		'1': lajeTipo1
+		'1': lajeTipo1,
+		'10': lajeTipo10
 	};
 
 	var visible_outputs = {

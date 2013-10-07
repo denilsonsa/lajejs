@@ -22,9 +22,10 @@ function linearInterp(x, x1, x2, y1, y2) {
 // and flexible.
 function tableLookup(table, key_name, value_name, key) {
 	if (key < table[1][key_name]) {
+		// The key is smaller than row 1, using the fallback value from row 0.
 		return table[0][value_name];
 	} else {
-		// Looking up the key starting between elements 1 and 2.
+		// Looking up the key starting between rows 1 and 2.
 		for (var i = 2; i < table.length; i++) {
 			if (table[i][key_name] >= key) {
 				return linearInterp(
@@ -34,6 +35,8 @@ function tableLookup(table, key_name, value_name, key) {
 			}
 		}
 	}
+	// Key not found, it means it is larger than the maximum row value. Using
+	// the maximum value.
 	console.error(
 			"tableLookup: looking up a key outside of the range of the table. key = ",
 			key, " max key value = ", table[table.length - 1][key_name]);
@@ -44,34 +47,34 @@ function tableLookup(table, key_name, value_name, key) {
 function lajeTipo1(a, b, q) {
 	// Coeficientes da laje tipo 1 = tabela 14 do Aderson para a <= b
 	var asb = [
-	{ asb: null , cm01: 377 , cm02: 284 , cma: 502 , cmb: 117 } ,
-	{ asb: 0.5  , cm01: 377 , cm02: 284 , cma: 502 , cmb: 117 } ,
-	{ asb: 0.55 , cm01: 371 , cm02: 277 , cma: 468 , cmb: 126 } ,
-	{ asb: 0.6  , cm01: 364 , cm02: 269 , cma: 435 , cmb: 135 } ,
-	{ asb: 0.65 , cm01: 356 , cm02: 261 , cma: 402 , cmb: 142 } ,
-	{ asb: 0.7  , cm01: 347 , cm02: 252 , cma: 369 , cmb: 149 } ,
-	{ asb: 0.75 , cm01: 337 , cm02: 242 , cma: 339 , cmb: 159 } ,
-	{ asb: 0.8  , cm01: 327 , cm02: 232 , cma: 311 , cmb: 167 } ,
-	{ asb: 0.85 , cm01: 315 , cm02: 221 , cma: 285 , cmb: 174 } ,
-	{ asb: 0.9  , cm01: 303 , cm02: 209 , cma: 260 , cmb: 180 } ,
-	{ asb: 0.95 , cm01: 291 , cm02: 197 , cma: 237 , cmb: 183 } ,
-	{ asb: 1    , cm01: 279 , cm02: 185 , cma: 216 , cmb: 184 }
+	{ asb: null, cm01: 377, cm02: 284, cma: 502, cmb: 117 },
+	{ asb: 0.50, cm01: 377, cm02: 284, cma: 502, cmb: 117 },
+	{ asb: 0.55, cm01: 371, cm02: 277, cma: 468, cmb: 126 },
+	{ asb: 0.60, cm01: 364, cm02: 269, cma: 435, cmb: 135 },
+	{ asb: 0.65, cm01: 356, cm02: 261, cma: 402, cmb: 142 },
+	{ asb: 0.70, cm01: 347, cm02: 252, cma: 369, cmb: 149 },
+	{ asb: 0.75, cm01: 337, cm02: 242, cma: 339, cmb: 159 },
+	{ asb: 0.80, cm01: 327, cm02: 232, cma: 311, cmb: 167 },
+	{ asb: 0.85, cm01: 315, cm02: 221, cma: 285, cmb: 174 },
+	{ asb: 0.90, cm01: 303, cm02: 209, cma: 260, cmb: 180 },
+	{ asb: 0.95, cm01: 291, cm02: 197, cma: 237, cmb: 183 },
+	{ asb: 1.00, cm01: 279, cm02: 185, cma: 216, cmb: 184 }
 	];
 
 	// Coeficientes da laje tipo 1 = tabela 14 do Aderson para a > b
 	var bsa = [
-	{ bsa: null , cm01: 471 , cm02: 199 , cma: 208 , cmb: 514 } ,
-	{ bsa: 0.5  , cm01: 471 , cm02: 199 , cma: 208 , cmb: 514 } ,
-	{ bsa: 0.55 , cm01: 449 , cm02: 199 , cma: 218 , cmb: 470 } ,
-	{ bsa: 0.6  , cm01: 427 , cm02: 206 , cma: 225 , cmb: 425 } ,
-	{ bsa: 0.65 , cm01: 406 , cm02: 211 , cma: 230 , cmb: 384 } ,
-	{ bsa: 0.7  , cm01: 386 , cm02: 213 , cma: 233 , cmb: 345 } ,
-	{ bsa: 0.75 , cm01: 367 , cm02: 212 , cma: 233 , cmb: 311 } ,
-	{ bsa: 0.8  , cm01: 348 , cm02: 209 , cma: 232 , cmb: 280 } ,
-	{ bsa: 0.85 , cm01: 329 , cm02: 206 , cma: 230 , cmb: 253 } ,
-	{ bsa: 0.9  , cm01: 311 , cm02: 201 , cma: 288 , cmb: 228 } ,
-	{ bsa: 0.95 , cm01: 294 , cm02: 194 , cma: 223 , cmb: 205 } ,
-	{ bsa: 1    , cm01: 279 , cm02: 185 , cma: 216 , cmb: 184 }
+	{ bsa: null, cm01: 471, cm02: 199, cma: 208, cmb: 514 },
+	{ bsa: 0.50, cm01: 471, cm02: 199, cma: 208, cmb: 514 },
+	{ bsa: 0.55, cm01: 449, cm02: 199, cma: 218, cmb: 470 },
+	{ bsa: 0.60, cm01: 427, cm02: 206, cma: 225, cmb: 425 },
+	{ bsa: 0.65, cm01: 406, cm02: 211, cma: 230, cmb: 384 },
+	{ bsa: 0.70, cm01: 386, cm02: 213, cma: 233, cmb: 345 },
+	{ bsa: 0.75, cm01: 367, cm02: 212, cma: 233, cmb: 311 },
+	{ bsa: 0.80, cm01: 348, cm02: 209, cma: 232, cmb: 280 },
+	{ bsa: 0.85, cm01: 329, cm02: 206, cma: 230, cmb: 253 },
+	{ bsa: 0.90, cm01: 311, cm02: 201, cma: 288, cmb: 228 },
+	{ bsa: 0.95, cm01: 294, cm02: 194, cma: 223, cmb: 205 },
+	{ bsa: 1.00, cm01: 279, cm02: 185, cma: 216, cmb: 184 }
 	];
 
 	var table;
@@ -109,6 +112,62 @@ function lajeTipo1(a, b, q) {
 	var key_min = table[1][key_name]
 	if (key < key_min) {
 		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Esforços calculados para uma relação (' + relacao + ') = ' + key_min.toFixed(2) + '.';
+		ret.msg = msg;
+	}
+	return ret;
+}
+
+function lajeTipo10(a, b, q) {
+	// laje Tipo 10 = tabela 23 do Aderson
+	var asb = [
+	{ asb: null, cxa: -131, cma:  -3, cmb:   6, cmr:  13 },
+	{ asb: 0.30, cxa: -131, cma:  -3, cmb:   6, cmr:  13 },
+	{ asb: 0.35, cxa: -167, cma:   4, cmb:   8, cmr:  24 },
+	{ asb: 0.40, cxa: -204, cma:  12, cmb:  12, cmr:  37 },
+	{ asb: 0.45, cxa: -243, cma:  21, cmb:  20, cmr:  52 },
+	{ asb: 0.50, cxa: -280, cma:  30, cmb:  30, cmr:  69 },
+	{ asb: 0.55, cxa: -315, cma:  40, cmb:  42, cmr:  89 },
+	{ asb: 0.60, cxa: -349, cma:  51, cmb:  56, cmr: 110 },
+	{ asb: 0.65, cxa: -382, cma:  61, cmb:  70, cmr: 130 },
+	{ asb: 0.70, cxa: -415, cma:  71, cmb:  84, cmr: 149 },
+	{ asb: 0.75, cxa: -447, cma:  80, cmb:  99, cmr: 168 },
+	{ asb: 0.80, cxa: -476, cma:  89, cmb: 115, cmr: 185 },
+	{ asb: 0.85, cxa: -502, cma:  97, cmb: 132, cmr: 200 },
+	{ asb: 0.90, cxa: -527, cma: 105, cmb: 149, cmr: 214 },
+	{ asb: 0.95, cxa: -551, cma: 111, cmb: 166, cmr: 226 },
+	{ asb: 1.00, cxa: -573, cma: 116, cmb: 182, cmr: 236 },
+	{ asb: 1.10, cxa: -611, cma: 122, cmb: 215, cmr: 254 },
+	{ asb: 1.20, cxa: -647, cma: 126, cmb: 248, cmr: 267 },
+	{ asb: 1.30, cxa: -679, cma: 130, cmb: 279, cmr: 272 },
+	{ asb: 1.40, cxa: -709, cma: 132, cmb: 309, cmr: 275 },
+	{ asb: 1.50, cxa: -738, cma: 133, cmb: 337, cmr: 271 },
+	{ asb: 1.75, cxa: -790, cma: 119, cmb: 400, cmr: 262 },
+	{ asb: 2.00, cxa: -830, cma:  88, cmb: 453, cmr: 248 }
+	];
+
+	var key = a / b;
+
+	var cxa = tableLookup(asb, 'asb', 'cxa', key);
+	var cma = tableLookup(asb, 'asb', 'cma', key);
+	var cmb = tableLookup(asb, 'asb', 'cmb', key);
+	var cmr = tableLookup(asb, 'asb', 'cmr', key);
+
+	var ret = {
+		xa: cxa / 10000 * q * b * b,
+		ma: cma / 10000 * q * b * b,
+		mb: cmb / 10000 * q * b * b,
+		mr: cmr / 10000 * q * b * b
+	};
+
+
+	var key_min = asb[1].asb;
+	var key_max = asb[asb.length - 1].asb;
+	if (key < key_min) {
+		var msg = '(a/b) = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (a/b) = ' + key_min.toFixed(2) + '.';
+		ret.msg = msg;
+	}
+	if (key > key_max) {
+		var msg = '(a/b) = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (a/b) = ' + key_max.toFixed(2) + '.';
 		ret.msg = msg;
 	}
 	return ret;
