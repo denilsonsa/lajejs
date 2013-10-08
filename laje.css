@@ -420,6 +420,42 @@ select:focus:invalid:focus {
 }
 
 /********************************************************************/
+/* Collapsable fieldsets */
+fieldset.collapsable > legend {
+	cursor: pointer;
+}
+fieldset.collapsable > legend:before {
+	content: "▼";
+
+	/* Since ▼ and ▶ may have different widths, I'm forcing them to a fixed
+	 * width.
+	 */
+	display: inline-block;
+	width: 1.5em;
+}
+fieldset.collapsable.collapsed > legend:before {
+	content: "▶";
+}
+fieldset.collapsable.collapsed {
+	/* No height transition because of:
+	 * https://code.google.com/p/chromium/issues/detail?id=257520
+	 */
+	height: 1px;
+	border-left-color:transparent;
+	border-right-color:transparent;
+	border-bottom-color:transparent;
+}
+/* Workaround for Firefox, due to a bug open since 2004:
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=261037
+ */
+fieldset.collapsable.collapsed > * {
+	display: none;
+}
+fieldset.collapsable.collapsed > legend {
+	display: block;
+}
+
+/********************************************************************/
 /* Smaller size looks much better. */
 .halfsize .tipo-laje label svg.fig-laje {
 	width: 50px;

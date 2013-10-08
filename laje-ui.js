@@ -210,11 +210,17 @@ function formLajeChangeHandler(ev) {
 	recalculateValues(this);
 }
 
+function fieldsetLegendClickHandler(ev) {
+	var target = ev.target;
+	var fieldset = target.parentNode;
+	fieldset.classList.toggle('collapsed');
+}
+
 function windowLoadHandler(ev) {
 	// Creating copies of the SVG image.
-	var foo = document.querySelectorAll('fieldset.tipo-laje label');
-	for (var i = 0; i < foo.length; i++) {
-		var label = foo[i];
+	var labels = document.querySelectorAll('fieldset.tipo-laje label');
+	for (var i = 0; i < labels.length; i++) {
+		var label = labels[i];
 		var number = label.querySelector('input[type="radio"]').value;
 		var fig = newFigLaje(number);
 		label.appendChild(fig);
@@ -226,6 +232,12 @@ function windowLoadHandler(ev) {
 
 	// Initializing the page.
 	recalculateValues(form_laje);
+
+	// Collapsable fieldsets.
+	var legends = document.querySelectorAll('fieldset.collapsable > legend');
+	for (var i = 0; i < legends.length; i++) {
+		legends[i].addEventListener('click', fieldsetLegendClickHandler, false);
+	}
 }
 
 window.addEventListener('load', windowLoadHandler, false);
