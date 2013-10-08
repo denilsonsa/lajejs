@@ -10,9 +10,13 @@ s/[ \r]\+$//
 
 # Version 2: converts to an Array of objects, using JavaScript notation.
 s/:/,/g
+# .5 -> 0.5
 s/ = \(\.[0-9]\)/ = 0\1/g
+# 0.5 -> 0.50
 s/\( = [0-9]\.[0-9]\),/\10,/g
 s/([0-9]\+) = /: /g
+s/: 1, /: 1.00, /g
+s/: 2, /: 2.00, /g
 s/^/{ /
 s/ *$/ } ,/
 

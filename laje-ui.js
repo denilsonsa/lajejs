@@ -111,14 +111,6 @@ function setFigLajeNumber(elem, number) {
 // Main function of this page. Reads all form input values, handles invalid
 // values, calls the required backend function, shows the results to the user.
 function recalculateValues(form) {
-	var functions = {
-		'1': lajeTipo1,
-		'10': lajeTipo10,
-		'11': lajeTipo11,
-		'12': lajeTipo12,
-		'13': lajeTipo13
-	};
-
 	var visible_outputs = {
 		'xa' : false,
 		'xa1': false,
@@ -140,7 +132,7 @@ function recalculateValues(form) {
 	var tipo = getRadioValue(form.tipo);
 	var msg;
 
-	if (functions[tipo]) {
+	if (laje_functions[tipo]) {
 		// Updating the diagram.
 		var diagrama = form.querySelector('.fig-diagrama');
 		diagrama.classList.remove('hidden');
@@ -152,7 +144,7 @@ function recalculateValues(form) {
 		var q = parseFloat(form.q.value);
 
 		if (a > 0 && b > 0 && q > 0) {
-			var ret = functions[tipo](a, b, q);
+			var ret = laje_functions[tipo](a, b, q);
 
 			msg = ret.msg;
 			delete ret.msg; // Deleting ret.msg because of the for..in loop below.
