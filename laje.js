@@ -75,11 +75,13 @@ function doubleTableLookup(asb, bsa, value_names, a, b) {
 		data = tableLookup(asb, 'asb', value_names, a / b);
 		data.smallest = a;
 		data.largest = b;
+		data.key = a / b;
 		data.relacao = 'a/b';
 	} else {
 		data = tableLookup(bsa, 'bsa', value_names, b / a);
 		data.smallest = b;
 		data.largest = a;
+		data.key = b / a;
 		data.relacao = 'b/a';
 	}
 
@@ -87,7 +89,7 @@ function doubleTableLookup(asb, bsa, value_names, a, b) {
 }
 
 // Convenience function, in order to reduce copy-paste.
-function checkLimits(relacao, data, ret) {
+function checkLimits(relacao, key, data, ret) {
 	if (data.underLimit || data.overLimit) {
 		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
 		ret.msg = msg;
@@ -136,7 +138,7 @@ function lajeTipo1(a, b, q) {
 		m02: data.cm02 / 10000 * q * data.smallest * data.smallest
 	};
 
-	checkLimits(data.relacao, data, ret);
+	checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
@@ -178,7 +180,7 @@ function lajeTipo10(a, b, q) {
 		mr: data.cmr / 10000 * q * b * b
 	};
 
-	checkLimits('a/b', data, ret);
+	checkLimits('a/b', key, data, ret);
 	return ret;
 }
 
@@ -221,7 +223,7 @@ function lajeTipo11(a, b, q) {
 		mr: data.cmr / 10000 * q * b * b
 	};
 
-	checkLimits('a/b', data, ret);
+	checkLimits('a/b', key, data, ret);
 	return ret;
 }
 
@@ -265,6 +267,6 @@ function lajeTipo12(a, b, q) {
 		mr: data.cmr / 10000 * q * b * b
 	};
 
-	checkLimits('a/b', data, ret);
+	checkLimits('a/b', key, data, ret);
 	return ret;
 }
