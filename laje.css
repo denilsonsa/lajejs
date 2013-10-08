@@ -444,12 +444,17 @@ select:focus:invalid:focus {
 	 * https://bugzilla.mozilla.org/show_bug.cgi?id=702508
 	 */
 	flex-wrap: wrap;
+
+	/* Fallback for browsers without flexbox support, such as Safari 5.1 and Android browser. */
+	text-align: center;
 }
 .flex-cols > * {
 	flex: 1 0 auto;
+
 	/* Fallback for browsers without flexbox support, such as Safari 5.1 and Android browser. */
 	display: inline-block;
 	vertical-align: top;
+	text-align: left;
 }
 
 /********************************************************************/
