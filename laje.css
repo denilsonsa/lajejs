@@ -363,6 +363,14 @@ select:focus:invalid:focus {
  *   "[ 0.001 ]" is the value (either input or output).
  * Each line containing a name-number-unit is one label element.
  */
+.name-number-unit-list {
+	/* Defining this here to have a minimum width even when no <output> fields
+	 * are being shown.
+	 * .prefix + output width + .suffix + output margin + output padding
+	 */
+	min-width: 16.1625em;  /* 15.6em + 1ex (= ~ 9/16em) */
+	min-width: calc(4em + 6em + 5em + 1ex + 0.6em);
+}
 .name-number-unit-list label {
 	display: block;
 }
