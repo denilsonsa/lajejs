@@ -1,4 +1,7 @@
 syntax: glob
+# Auto-generated files:
+laje-combined.html
+
 # Temporary and backup files:
 \#*#
 .*~
