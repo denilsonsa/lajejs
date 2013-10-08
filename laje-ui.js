@@ -1,4 +1,5 @@
 /*jslint browser: true, devel: true, sloppy: true, white: true */
+/*global laje_functions */
 
 "use strict";
 
