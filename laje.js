@@ -91,7 +91,7 @@ function doubleTableLookup(asb, bsa, value_names, a, b) {
 // Convenience function, in order to reduce copy-paste.
 function checkLimits(relacao, key, data, ret) {
 	if (data.underLimit || data.overLimit) {
-		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
+		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Os valores foram calculados para uma relação (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
 		ret.msg = msg;
 	}
 }
