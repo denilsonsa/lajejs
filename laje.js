@@ -270,3 +270,50 @@ function lajeTipo12(a, b, q) {
 	checkLimits('a/b', key, data, ret);
 	return ret;
 }
+
+function lajeTipo13(a, b, q) {
+	// Laje tipo 13 = tabela tipo 1 de Kalmanock para a <= b
+	var asb = [
+	{ asb: null, cma: 1250, cmb: 250, cqaa: 0.50, cqba: 0.27 },
+	{ asb: 0.50, cma:  965, cmb: 174, cqaa: 0.37, cqba: 0.27 },
+	{ asb: 0.55, cma:  892, cmb: 210, cqaa: 0.35, cqba: 0.27 },
+	{ asb: 0.60, cma:  820, cmb: 243, cqaa: 0.34, cqba: 0.27 },
+	{ asb: 0.65, cma:  750, cmb: 273, cqaa: 0.33, cqba: 0.27 },
+	{ asb: 0.70, cma:  683, cmb: 298, cqaa: 0.32, cqba: 0.26 },
+	{ asb: 0.75, cma:  619, cmb: 318, cqaa: 0.30, cqba: 0.26 },
+	{ asb: 0.80, cma:  560, cmb: 334, cqaa: 0.29, cqba: 0.26 },
+	{ asb: 0.85, cma:  506, cmb: 348, cqaa: 0.28, cqba: 0.26 },
+	{ asb: 0.90, cma:  456, cmb: 359, cqaa: 0.27, cqba: 0.26 },
+	{ asb: 0.95, cma:  410, cmb: 365, cqaa: 0.26, cqba: 0.25 },
+	{ asb: 1.00, cma:  368, cmb: 368, cqaa: 0.25, cqba: 0.25 },
+	];
+
+	// Laje tipo 13 = tabela tipo 1 de Kalmanock para a > b
+	var bsa = [
+	{ asb: null, cmb: 1250, cma: 250, cqba: 0.50, cqaa: 0.27 },
+	{ bsa: 0.50, cmb:  965, cma: 174, cqba: 0.37, cqaa: 0.27 },
+	{ bsa: 0.55, cmb:  892, cma: 210, cqba: 0.35, cqaa: 0.27 },
+	{ bsa: 0.60, cmb:  820, cma: 243, cqba: 0.34, cqaa: 0.27 },
+	{ bsa: 0.65, cmb:  750, cma: 273, cqba: 0.33, cqaa: 0.27 },
+	{ bsa: 0.70, cmb:  683, cma: 298, cqba: 0.32, cqaa: 0.26 },
+	{ bsa: 0.75, cmb:  619, cma: 318, cqba: 0.30, cqaa: 0.26 },
+	{ bsa: 0.80, cmb:  560, cma: 334, cqba: 0.29, cqaa: 0.26 },
+	{ bsa: 0.85, cmb:  506, cma: 348, cqba: 0.28, cqaa: 0.26 },
+	{ bsa: 0.90, cmb:  456, cma: 359, cqba: 0.27, cqaa: 0.26 },
+	{ bsa: 0.95, cmb:  410, cma: 365, cqba: 0.26, cqaa: 0.25 },
+	{ bsa: 1.00, cmb:  368, cma: 368, cqba: 0.25, cqaa: 0.25 }
+	];
+
+	var data = doubleTableLookup(asb, bsa, ['cma', 'cmb', 'cqaa', 'cqba'], a, b);
+
+	var ret = {
+		ma:  data.cma  / 10000 * q * data.smallest * data.smallest,
+		mb:  data.cmb  / 10000 * q * data.smallest * data.smallest,
+		qaa: data.cqaa / 10000 * q * data.smallest,
+		qba: data.cqba / 10000 * q * data.smallest
+	};
+
+	checkLimits(data.relacao, data.key, data, ret);
+	return ret;
+}
+

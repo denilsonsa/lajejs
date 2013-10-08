@@ -115,7 +115,8 @@ function recalculateValues(form) {
 		'1': lajeTipo1,
 		'10': lajeTipo10,
 		'11': lajeTipo11,
-		'12': lajeTipo12
+		'12': lajeTipo12,
+		'13': lajeTipo13
 	};
 
 	var visible_outputs = {
