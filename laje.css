@@ -447,6 +447,9 @@ select:focus:invalid:focus {
 }
 .flex-cols > * {
 	flex: 1 0 auto;
+	/* Fallback for browsers without flexbox support, such as Safari 5.1 and Android browser. */
+	display: inline-block;
+	vertical-align: top;
 }
 
 /********************************************************************/
