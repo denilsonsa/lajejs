@@ -88,7 +88,8 @@ function newFigLaje(number) {
 	var new_fig = model.cloneNode(true);  // deep = true
 	new_fig.removeAttribute('id');
 	if (number && number > 0) {
-		new_fig.classList.add('fig-laje-' + number);
+		// FIXME: poor WebKit SVG support.
+		//new_fig.classList.add('fig-laje-' + number);
 	}
 	return new_fig;
 }
@@ -96,6 +97,8 @@ function newFigLaje(number) {
 // Given a <svg class="fig-laje"> and optionally a positive number, reset the
 // "fig-laje-<number>".
 function setFigLajeNumber(elem, number) {
+	// FIXME: poor WebKit SVG support.
+	return;
 	for (var i = 0; i < elem.classList.length; i++) {
 		var s = elem.classList.item(i);
 		if (/^fig-laje-[0-9]+/.test(s)) {
@@ -149,7 +152,8 @@ function recalculateValues(form) {
 	if (laje_functions[tipo]) {
 		// Updating the diagram.
 		var diagrama = form.querySelector('.fig-diagrama');
-		diagrama.classList.remove('hidden');
+		// FIXME: poor WebKit SVG support.
+		//diagrama.classList.remove('hidden');
 		setFigLajeNumber(diagrama, tipo);
 
 		form.laje_desc.value = checked_label ? checked_label.title : '';
@@ -182,7 +186,8 @@ function recalculateValues(form) {
 		form.laje_desc.value = '';
 
 		var diagrama = form.querySelector('.fig-diagrama');
-		diagrama.classList.add('hidden');
+		// FIXME: poor WebKit SVG support.
+		//diagrama.classList.add('hidden');
 	}
 
 	// Showing the message to the user.
