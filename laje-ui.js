@@ -113,7 +113,9 @@ function setFigLajeNumber(elem, number) {
 function recalculateValues(form) {
 	var functions = {
 		'1': lajeTipo1,
-		'10': lajeTipo10
+		'10': lajeTipo10,
+		'11': lajeTipo11,
+		'12': lajeTipo12
 	};
 
 	var visible_outputs = {

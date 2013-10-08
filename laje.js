@@ -1,5 +1,7 @@
 /*jslint browser: true, devel: true, sloppy: true, white: true */
 
+// vim:foldmethod=marker foldmarker={,}
+
 "use strict";
 
 // Returns a linear interpolation of y1,y2 based on x value between x1,x2.
@@ -63,6 +65,13 @@ function tableLookup(table, key_name, value_names, key) {
 }
 
 
+function checkLimits(relacao, data, ret) {
+	if (data.underLimit || data.overLimit) {
+		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
+		ret.msg = msg;
+	}
+}
+
 function lajeTipo1(a, b, q) {
 	// Coeficientes da laje tipo 1 = tabela 14 do Aderson para a <= b
 	var asb = [
@@ -125,15 +134,12 @@ function lajeTipo1(a, b, q) {
 		m02: data.cm02 / 10000 * q * smallest_side * smallest_side
 	};
 
-	if (data.underLimit) {
-		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Esforços calculados para uma relação (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
-		ret.msg = msg;
-	}
+	checkLimits(relacao, data, ret);
 	return ret;
 }
 
 function lajeTipo10(a, b, q) {
-	// laje Tipo 10 = tabela 23 do Aderson
+	// Laje tipo 10 = tabela 23 do Aderson
 	var asb = [
 	{ asb: null, cxa: -131, cma:  -3, cmb:   6, cmr:  13 },
 	{ asb: 0.30, cxa: -131, cma:  -3, cmb:   6, cmr:  13 },
@@ -170,9 +176,93 @@ function lajeTipo10(a, b, q) {
 		mr: data.cmr / 10000 * q * b * b
 	};
 
-	if (data.underLimit || data.overLimit) {
-		var msg = '(a/b) = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (a/b) = ' + data.limit.toFixed(2) + '.';
-		ret.msg = msg;
-	}
+	checkLimits('a/b', data, ret);
+	return ret;
+}
+
+function lajeTipo11(a, b, q) {
+	// Laje tipo 11 = tabela 24 do Aderson
+	var asb = [
+	{ asb: null, cxb: -132, cma: 45, cmb:   9, cxb1: -227, cmr:  65 },
+	{ asb: 0.30, cxb: -132, cma: 45, cmb:   9, cxb1: -227, cmr:  65 },
+	{ asb: 0.35, cxb: -155, cma: 54, cmb:  15, cxb1: -232, cmr:  80 },
+	{ asb: 0.40, cxb: -178, cma: 62, cmb:  24, cxb1: -238, cmr:  93 },
+	{ asb: 0.45, cxb: -200, cma: 69, cmb:  36, cxb1: -236, cmr: 103 },
+	{ asb: 0.50, cxb: -221, cma: 74, cmb:  48, cxb1: -229, cmr: 110 },
+	{ asb: 0.55, cxb: -241, cma: 76, cmb:  59, cxb1: -219, cmr: 114 },
+	{ asb: 0.60, cxb: -260, cma: 77, cmb:  70, cxb1: -207, cmr: 116 },
+	{ asb: 0.65, cxb: -278, cma: 78, cmb:  80, cxb1: -196, cmr: 117 },
+	{ asb: 0.70, cxb: -295, cma: 78, cmb:  90, cxb1: -185, cmr: 116 },
+	{ asb: 0.75, cxb: -310, cma: 77, cmb: 100, cxb1: -174, cmr: 115 },
+	{ asb: 0.80, cxb: -324, cma: 76, cmb: 109, cxb1: -163, cmr: 112 },
+	{ asb: 0.85, cxb: -337, cma: 73, cmb: 118, cxb1: -152, cmr: 108 },
+	{ asb: 0.90, cxb: -349, cma: 70, cmb: 127, cxb1: -142, cmr: 104 },
+	{ asb: 0.95, cxb: -360, cma: 67, cmb: 136, cxb1: -132, cmr: 100 },
+	{ asb: 1.00, cxb: -368, cma: 63, cmb: 145, cxb1: -122, cmr:  96 },
+	{ asb: 1.10, cxb: -384, cma: 56, cmb: 159, cxb1: -105, cmr:  87 },
+	{ asb: 1.20, cxb: -396, cma: 50, cmb: 171, cxb1:  -90, cmr:  79 },
+	{ asb: 1.30, cxb: -405, cma: 43, cmb: 179, cxb1:  -80, cmr:  72 },
+	{ asb: 1.40, cxb: -410, cma: 37, cmb: 185, cxb1:  -73, cmr:  66 },
+	{ asb: 1.50, cxb: -413, cma: 31, cmb: 190, cxb1:  -65, cmr:  59 },
+	{ asb: 1.75, cxb: -416, cma: 19, cmb: 200, cxb1:  -58, cmr:  52 },
+	{ asb: 2.00, cxb: -417, cma:  9, cmb: 206, cxb1:  -52, cmr:  47 }
+	];
+
+	var key = a / b;
+	var data = tableLookup(asb, 'asb', ['cxb', 'cma', 'cmb', 'cxb1', 'cmr'], key);
+
+	var ret = {
+		xb: data.cxb / 10000 * q * b * b,
+		ma: data.cma / 10000 * q * b * b,
+		mb: data.cmb / 10000 * q * b * b,
+		xb1: data.cxb1 / 10000 * q * b * b,
+		mr: data.cmr / 10000 * q * b * b
+	};
+
+	checkLimits('a/b', data, ret);
+	return ret;
+}
+
+function lajeTipo12(a, b, q) {
+	// Laje tipo 12 = tabela 25 do Aderson
+	var asb = [
+	{ asb: null, cxa: -120, cxb:  -48, cma:  2, cmb:   6, cxb1:  -89, cmr: 28 },
+	{ asb: 0.30, cxa: -120, cxb:  -48, cma:  2, cmb:   6, cxb1:  -89, cmr: 28 },
+	{ asb: 0.35, cxa: -148, cxb:  -66, cma:  9, cmb:  12, cxb1: -112, cmr: 35 },
+	{ asb: 0.40, cxa: -172, cxb:  -84, cma: 16, cmb:  18, cxb1: -131, cmr: 44 },
+	{ asb: 0.45, cxa: -193, cxb: -104, cma: 24, cmb:  26, cxb1: -149, cmr: 54 },
+	{ asb: 0.50, cxa: -212, cxb: -124, cma: 32, cmb:  34, cxb1: -164, cmr: 64 },
+	{ asb: 0.55, cxa: -229, cxb: -145, cma: 41, cmb:  42, cxb1: -165, cmr: 72 },
+	{ asb: 0.60, cxa: -246, cxb: -166, cma: 50, cmb:  50, cxb1: -165, cmr: 79 },
+	{ asb: 0.65, cxa: -262, cxb: -186, cma: 57, cmb:  58, cxb1: -164, cmr: 85 },
+	{ asb: 0.70, cxa: -277, cxb: -205, cma: 62, cmb:  67, cxb1: -162, cmr: 90 },
+	{ asb: 0.75, cxa: -291, cxb: -222, cma: 65, cmb:  76, cxb1: -159, cmr: 94 },
+	{ asb: 0.80, cxa: -304, cxb: -238, cma: 67, cmb:  85, cxb1: -153, cmr: 96 },
+	{ asb: 0.85, cxa: -317, cxb: -254, cma: 69, cmb:  94, cxb1: -144, cmr: 97 },
+	{ asb: 0.90, cxa: -329, cxb: -269, cma: 71, cmb: 102, cxb1: -136, cmr: 96 },
+	{ asb: 0.95, cxa: -340, cxb: -283, cma: 71, cmb: 110, cxb1: -128, cmr: 95 },
+	{ asb: 1.00, cxa: -349, cxb: -297, cma: 70, cmb: 118, cxb1: -120, cmr: 91 },
+	{ asb: 1.10, cxa: -358, cxb: -319, cma: 68, cmb: 126, cxb1: -103, cmr: 83 },
+	{ asb: 1.20, cxa: -375, cxb: -338, cma: 64, cmb: 134, cxb1:  -88, cmr: 76 },
+	{ asb: 1.30, cxa: -391, cxb: -354, cma: 57, cmb: 142, cxb1:  -78, cmr: 69 },
+	{ asb: 1.40, cxa: -405, cxb: -367, cma: 49, cmb: 150, cxb1:  -71, cmr: 63 },
+	{ asb: 1.50, cxa: -418, cxb: -378, cma: 41, cmb: 158, cxb1:  -64, cmr: 57 },
+	{ asb: 1.75, cxa: -455, cxb: -399, cma: 27, cmb: 179, cxb1:  -57, cmr: 51 },
+	{ asb: 2.00, cxa: -478, cxb: -413, cma: 16, cmb: 203, cxb1:  -51, cmr: 46 }
+	];
+
+	var key = a / b;
+	var data = tableLookup(asb, 'asb', ['cxa', 'cxb', 'cma', 'cmb', 'cxb1', 'cmr'], key);
+
+	var ret = {
+		xa: data.cxa / 10000 * q * b * b,
+		xb: data.cxb / 10000 * q * b * b,
+		ma: data.cma / 10000 * q * b * b,
+		mb: data.cmb / 10000 * q * b * b,
+		xb1: data.cxb1 / 10000 * q * b * b,
+		mr: data.cmr / 10000 * q * b * b
+	};
+
+	checkLimits('a/b', data, ret);
 	return ret;
 }
