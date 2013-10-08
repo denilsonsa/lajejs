@@ -761,7 +761,7 @@ function lajeTipo15(a, b, q) {
 	{ bsa: 1.00, cxb:  -677, cxa: -677, cmb: 234, cma: 234, cqba: 0.16, cqbe: 0.34, cqaa: 0.16, cqae: 0.34 }
 	];
 
-	var data = doubleTableLookup(asb, bsa, ['cxa', 'cxb', 'cma', 'cmb', 'cqaa', 'cqae', 'cqba', 'cqae'], a, b);
+	var data = doubleTableLookup(asb, bsa, ['cxa', 'cxb', 'cma', 'cmb', 'cqaa', 'cqae', 'cqba', 'cqbe'], a, b);
 
 	var ret = {
 		xa:  data.cxa  / 10000 * q * data.smallest * data.smallest,
