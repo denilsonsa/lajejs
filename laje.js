@@ -65,6 +65,28 @@ function tableLookup(table, key_name, value_names, key) {
 }
 
 
+// Convenience function, in order to reduce copy-paste.
+// Returns the same as tableLookup(), but augmented with a few extra
+// attributes.
+function doubleTableLookup(asb, bsa, value_names, a, b) {
+	var data;
+
+	if (a <= b) {
+		data = tableLookup(asb, 'asb', value_names, a / b);
+		data.smallest = a;
+		data.largest = b;
+		data.relacao = 'a/b';
+	} else {
+		data = tableLookup(bsa, 'bsa', value_names, b / a);
+		data.smallest = b;
+		data.largest = a;
+		data.relacao = 'b/a';
+	}
+
+	return data;
+}
+
+// Convenience function, in order to reduce copy-paste.
 function checkLimits(relacao, data, ret) {
 	if (data.underLimit || data.overLimit) {
 		var msg = '(' + relacao + ') = ' + key.toFixed(2) + '. Os valores foram calculados para uma relacao (' + relacao + ') = ' + data.limit.toFixed(2) + '.';
@@ -105,36 +127,16 @@ function lajeTipo1(a, b, q) {
 	{ bsa: 1.00, cm01: 279, cm02: 185, cma: 216, cmb: 184 }
 	];
 
-	var table;
-	var key_name;
-	var key;
-	var smallest_side;
-	var relacao;
-
-	if (a <= b) {
-		key = a / b;
-		key_name = 'asb';
-		table = asb;
-		smallest_side = a;
-		relacao = 'a/b';
-	} else {
-		key = b / a;
-		key_name = 'bsa';
-		table = bsa;
-		smallest_side = b;
-		relacao = 'b/a';
-	}
-
-	var data = tableLookup(table, key_name, ['cma', 'cmb', 'cm01', 'cm02'], key);
+	var data = doubleTableLookup(asb, bsa, ['cma', 'cmb', 'cm01', 'cm02'], a, b);
 
 	var ret = {
-		ma:  data.cma  / 10000 * q * smallest_side * smallest_side,
-		mb:  data.cmb  / 10000 * q * smallest_side * smallest_side,
-		m01: data.cm01 / 10000 * q * smallest_side * smallest_side,
-		m02: data.cm02 / 10000 * q * smallest_side * smallest_side
+		ma:  data.cma  / 10000 * q * data.smallest * data.smallest,
+		mb:  data.cmb  / 10000 * q * data.smallest * data.smallest,
+		m01: data.cm01 / 10000 * q * data.smallest * data.smallest,
+		m02: data.cm02 / 10000 * q * data.smallest * data.smallest
 	};
 
-	checkLimits(relacao, data, ret);
+	checkLimits(data.relacao, data, ret);
 	return ret;
 }
 
