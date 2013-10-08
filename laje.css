@@ -4,6 +4,8 @@ html, body {
 	color: black;
 	font-family: Arial, sans-serif;
 	font-size: 16px;
+	margin: 0;
+	padding: 0;
 }
 input, output {
 	font-size: 0.8em;
@@ -247,6 +249,7 @@ select:focus:invalid:focus {
 .diagrama .fig-diagrama,
 .diagrama output[name="laje_desc"] {
 	display: block;
+	margin: auto;
 }
 .fig-diagrama line {
 	stroke: black;
@@ -417,7 +420,7 @@ select:focus:invalid:focus {
 }
 
 /********************************************************************/
-/* Smaller size? */
+/* Smaller size looks much better. */
 .halfsize .tipo-laje label svg.fig-laje {
 	width: 50px;
 	height: 50px;
@@ -434,9 +437,16 @@ select:focus:invalid:focus {
 }
 
 /********************************************************************/
-.fake-flex > * {
-	display: inline-block;
-	vertical-align: top;
+.flex-cols {
+	display: flex;
+	flex-direction: row;
+	/* Firefox 24 still does not support flex-wrap.
+	 * https://bugzilla.mozilla.org/show_bug.cgi?id=702508
+	 */
+	flex-wrap: wrap;
+}
+.flex-cols > * {
+	flex: 1 0 auto;
 }
 
 /********************************************************************/
