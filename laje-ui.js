@@ -7,17 +7,17 @@
 // Generic, reusable UI-related and HTML-related functions.
 
 
-// Given a NodeList corresponding to a radio group, returns the value of the
-// checked radio box. Sample usage:
+// Given a NodeList corresponding to a radio group, returns the checked radio
+// element. Sample usage:
 //
-// var foobar = getRadioValue(document.forms[0].radio_name_here);
+// var radio = getCheckedRadio(document.forms[0].radio_name_here);
 //
 // Based on http://stackoverflow.com/a/3869957/
-function getRadioValue(radio_group) {
+function getCheckedRadio(radio_group) {
     for (var i = 0; i < radio_group.length; i++) {
         var radio = radio_group[i];
         if (radio.checked) {
-            return radio.value;
+            return radio;
         }
     }
     return undefined;
@@ -129,14 +129,29 @@ function recalculateValues(form) {
 		'qbe': false
 	};
 
-	var tipo = getRadioValue(form.tipo);
+	var checked_radio = getCheckedRadio(form.tipo);
+	var tipo = checked_radio && checked_radio.value;
 	var msg;
+
+	// Highlighting the <label> corresponding to the checked radio box.
+	var tipo_laje_labels = form.querySelectorAll('.tipo-laje label');
+	var checked_label = checked_radio && checked_radio.parentNode;
+	for (var i = 0; i < tipo_laje_labels.length; i++) {
+		if (tipo_laje_labels[i] != checked_label) {
+			tipo_laje_labels[i].classList.remove('selected');
+		}
+	}
+	if (checked_label) {
+		checked_label.classList.add('selected');
+	}
 
 	if (laje_functions[tipo]) {
 		// Updating the diagram.
 		var diagrama = form.querySelector('.fig-diagrama');
 		diagrama.classList.remove('hidden');
 		setFigLajeNumber(diagrama, tipo);
+
+		form.laje_desc.value = checked_label ? checked_label.title : '';
 
 		// Note: Someday in future, we may use "form.a.valueAsNumber".
 		var a = parseFloat(form.a.value);
@@ -162,6 +177,8 @@ function recalculateValues(form) {
 	} else {
 		// Invalid "tipo".
 		msg = 'Selecione um tipo de laje.';
+
+		form.laje_desc.value = '';
 
 		var diagrama = form.querySelector('.fig-diagrama');
 		diagrama.classList.add('hidden');

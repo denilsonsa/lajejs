@@ -242,9 +242,11 @@ select:focus:invalid:focus {
 /********************************************************************/
 .diagrama {
 	position: relative;
+	width: 350px;
 }
-.fig-diagrama {
-	display: inline-block;
+.diagrama .fig-diagrama,
+.diagrama output[name="laje_desc"] {
+	display: block;
 }
 .fig-diagrama line {
 	stroke: black;
@@ -307,6 +309,12 @@ select:focus:invalid:focus {
 	position: relative;
 	cursor: pointer;
 }
+.tipo-laje label.selected {
+	/* Based on .pure-button-active */
+	background: #E6E6E6;
+	border-radius: 2px;
+	box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+}
 .tipo-laje label input[type="radio"] {
 	position: absolute;
 	top: 0;
@@ -317,7 +325,7 @@ select:focus:invalid:focus {
 	visibility: hidden;
 }
 .tipo-laje label input[type="radio"]:checked {
-	visibility: visible;
+	/*visibility: visible;*/
 }
 .tipo-laje label .number {
 	/* Positioning the number right in the middle of the icon. */
@@ -396,6 +404,7 @@ select:focus:invalid:focus {
 }
 
 .name-number-unit-list output[name="msg"] {
+	display: block;
 	color: #800000;
 }
 
@@ -407,6 +416,9 @@ select:focus:invalid:focus {
 }
 .halfsize .tipo-laje label .number {
 	font-size: 12px;
+}
+.halfsize .diagrama {
+	width: 175px;
 }
 .halfsize svg.fig-diagrama {
 	width: 175px;
