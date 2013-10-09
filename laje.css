@@ -85,17 +85,14 @@ textarea[readonly] {
     color: #777; /* menu text color */
     border-color: #ccc;
 }
+/*
 input:focus:invalid,
 textarea:focus:invalid,
 select:focus:invalid {
     color: #b94a48;
-    border: 1px solid #ee5f5b;
+    border: 1px solid #e9322d;
 }
-input:focus:invalid:focus,
-textarea:focus:invalid:focus,
-select:focus:invalid:focus {
-    border-color: #e9322d;
-}
+*/
 
 
 /********************************************************************/
