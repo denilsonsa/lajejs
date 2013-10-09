@@ -676,7 +676,8 @@ function lajeTipo13(a, b, q) {
 		qba: data.cqba * q * data.smallest
 	};
 
-	checkLimits(data.relacao, data.key, data, ret);
+	// Do not check limits here!
+	// checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
@@ -724,7 +725,8 @@ function lajeTipo14(a, b, q) {
 		qba: data.cqba * q * data.smallest
 	};
 
-	checkLimits(data.relacao, data.key, data, ret);
+	// Do not check limits here!
+	// checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
@@ -774,7 +776,8 @@ function lajeTipo15(a, b, q) {
 		qbe: data.cqbe * q * data.smallest
 	};
 
-	checkLimits(data.relacao, data.key, data, ret);
+	// Do not check limits here!
+	// checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
@@ -821,7 +824,8 @@ function lajeTipo16(a, b, q) {
 		qba: data.cqba * q * data.smallest
 	};
 
-	checkLimits(data.relacao, data.key, data, ret);
+	// Do not check limits here!
+	// checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
@@ -870,7 +874,8 @@ function lajeTipo17(a, b, q) {
 		qbe: data.cqbe * q * data.smallest
 	};
 
-	checkLimits(data.relacao, data.key, data, ret);
+	// Do not check limits here!
+	// checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
@@ -918,7 +923,8 @@ function lajeTipo18(a, b, q) {
 		qbe: data.cqbe * q * data.smallest
 	};
 
-	checkLimits(data.relacao, data.key, data, ret);
+	// Do not check limits here!
+	// checkLimits(data.relacao, data.key, data, ret);
 	return ret;
 }
 
