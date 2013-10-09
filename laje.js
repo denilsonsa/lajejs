@@ -867,7 +867,7 @@ function lajeTipo17(a, b, q) {
 		mb:  data.cmb  / 10000 * q * data.smallest * data.smallest,
 		qaa: data.cqaa * q * data.smallest,
 		qae: data.cqae * q * data.smallest,
-		qba: data.cqbe * q * data.smallest
+		qbe: data.cqbe * q * data.smallest
 	};
 
 	checkLimits(data.relacao, data.key, data, ret);
@@ -915,7 +915,7 @@ function lajeTipo18(a, b, q) {
 		ma:  data.cma  / 10000 * q * data.smallest * data.smallest,
 		mb:  data.cmb  / 10000 * q * data.smallest * data.smallest,
 		qae: data.cqae * q * data.smallest,
-		qba: data.cqbe * q * data.smallest
+		qbe: data.cqbe * q * data.smallest
 	};
 
 	checkLimits(data.relacao, data.key, data, ret);
