@@ -1,4 +1,7 @@
 #!/bin/sed -f
+#
+# Converts the tables from the QBasic code into a neat JavaScript table (an
+# Array of objects). Some manual fixing is still needed after this script.
 
 s/[ \r]\+$//
 

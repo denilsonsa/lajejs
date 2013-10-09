@@ -1,5 +1,8 @@
 #!/bin/sed -sf
 # Works on GNU sed 4.2.1.
+#
+# Cleans up the original QBasic code, by removing useless stuff and detecting a
+# common copy-paste piece of code.
 
 # Removing useless cruft.
 s|LOCATE [0-9]\+, *[0-9]\+ *:\? *||g
