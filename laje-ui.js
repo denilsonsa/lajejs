@@ -152,7 +152,9 @@ function recalculateValues(form) {
 		diagrama.classList.remove('hidden');
 		setFigLajeNumber(diagrama, tipo);
 
-		form.laje_desc.value = checked_label ? checked_label.title : '';
+		// IE10 does not support output.value
+		//form.laje_desc.value = checked_label ? checked_label.title : '';
+		form.laje_desc.textContent = checked_label ? checked_label.title : '';
 
 		// Note: Someday in future, we may use "form.a.valueAsNumber".
 		var a = parseFloat(form.a.value);
@@ -168,7 +170,9 @@ function recalculateValues(form) {
 			for (var name in ret) {
 				if (ret.hasOwnProperty(name)) {
 					visible_outputs[name] = true;
-					form[name].value = ret[name].toFixed(2);
+					// IE10 does not support output.value
+					//form[name].value = ret[name].toFixed(2);
+					form[name].textContent = ret[name].toFixed(2);
 				}
 			}
 		} else {
@@ -179,14 +183,18 @@ function recalculateValues(form) {
 		// Invalid "tipo".
 		msg = 'Selecione um tipo de laje.';
 
-		form.laje_desc.value = '';
+		// IE10 does not support output.value
+		//form.laje_desc.value = '';
+		form.laje_desc.textContent = '';
 
 		var diagrama = form.querySelector('.fig-diagrama');
 		diagrama.classList.add('hidden');
 	}
 
 	// Showing the message to the user.
-	form.msg.value = msg || '';
+	// IE10 does not support output.value
+	//form.msg.value = msg || '';
+	form.msg.textContent = msg || '';
 
 	// Showing/hiding the appropriate fields.
 	for (var name in visible_outputs) {
@@ -196,6 +204,26 @@ function recalculateValues(form) {
 				parent_label.classList.remove('hidden');
 			} else {
 				parent_label.classList.add('hidden');
+			}
+		}
+	}
+}
+
+
+// IE10 does not support <output> element. This function will at least add
+// references to the elements from within a form. It is not 100% support, it is
+// not perfect, but works for this script.
+function formOutputFallbackForIE10() {
+	var forms = document.getElementsByTagName('form');
+	for (var i = 0; i < forms.length; i++) {
+		var form = forms[i];
+		var outputs = form.getElementsByTagName('output');
+		for (var j = 0; j < outputs.length; j++) {
+			var output = outputs[j];
+			// Note: output.name is undefined in IE10.
+			var name = output.getAttribute('name');
+			if (name && !(name in form)) {
+				form[name] = output;
 			}
 		}
 	}
@@ -217,6 +245,9 @@ function fieldsetLegendClickHandler(ev) {
 }
 
 function windowLoadHandler(ev) {
+	// *sigh*
+	formOutputFallbackForIE10();
+
 	// Creating copies of the SVG image.
 	var labels = document.querySelectorAll('fieldset.tipo-laje label');
 	for (var i = 0; i < labels.length; i++) {
