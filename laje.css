@@ -483,7 +483,7 @@ fieldset.collapsable.collapsed > legend {
 	text-align: center;
 }
 .flex-cols > * {
-	flex: 1 0 auto;
+	flex: 1 0 175px;
 
 	/* Fallback for browsers without flexbox support, such as Safari 5.1 and Android browser. */
 	display: inline-block;
