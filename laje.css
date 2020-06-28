@@ -320,9 +320,10 @@ select:focus:invalid {
 	top: 0;
 	left: 50%;
 	width: 2em;
+	height: 0;
 	margin-left: -1em;
 	text-align: center;
-	visibility: hidden;
+	overflow: hidden;
 }
 .tipo-laje label input[type="radio"]:checked {
 	/*visibility: visible;*/
