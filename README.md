@@ -1,7 +1,7 @@
 This is the HTML/CSS/SVG/JavaScript version of some old QBasic scripts. The
 original code was rewritten using modern web technologies.
 
-Live page at <http://denilsonsa.github.io/lajejs/laje.html>
+Live page at <https://denilsonsa.github.io/lajejs/laje.html>
 
 ---
 
